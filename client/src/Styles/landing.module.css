@@ -1,0 +1,258 @@
+.Carousel {
+  width: 100%;
+  max-height: max-content;
+  position: relative;
+}
+.data {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.data > input {
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 5px;
+  border: none;
+  outline-color: #dc3545;
+}
+.data > input::placeholder {
+  padding-left: 5px;
+}
+.data > button {
+  padding: 5px 15px;
+  border-radius: 15px;
+  border: none;
+  background-color: #dc3545;
+  color: white;
+}
+
+.mainContainer {
+  width: 72%;
+  margin: 30px auto;
+  display: flex;
+  padding: 10px 10px 30px 10px;
+  text-align: left;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+}
+
+.imgBox {
+  width: 15%;
+  text-align: center;
+  padding-top: 10px;
+}
+.imgBox > img {
+  width: 70%;
+}
+.writingConatiner {
+  padding-left: 5px;
+}
+.writingConatiner h2 {
+  color: #3e3e52;
+  font-weight: 600;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+.writingConatiner > h3 {
+  color: #7e7e8c;
+  font-size: 2rem;
+  font-weight: 300;
+  display: inline-block;
+}
+.writingConatiner > p {
+  color: #4a4a4a;
+  font-size: 16px;
+}
+.boldspan {
+  font-weight: 700;
+  color: black;
+}
+.lowerFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.lowerFlexItems > h3 {
+  color: #1446a0;
+  height: 20px;
+  font-size: 19px;
+  font-weight: bolder;
+  width: max-content;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0.3px;
+  text-align: left;
+}
+
+.couponContainer {
+  box-sizing: border-box;
+}
+.couponContainer {
+  width: 100%;
+  height: 400px;
+  background-color: #f7f7f7;
+  padding: 70px 0;
+  position: relative;
+}
+.flex {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 73%;
+  margin: auto;
+  justify-content: space-evenly;
+  border: 1px solid;
+  margin-top: 10px;
+}
+.coupon {
+  flex-basis: calc(33.333% - 20px);
+  margin: 10px 10px;
+  box-shadow: 0 1px 10px #c3c3c3;
+  background-color: white;
+  text-align: center;
+  padding: 8px 0;
+  transition: 0.4s all ease-in-out;
+}
+.coupon > span {
+  display: block;
+}
+.coupon > span:first-child,
+.coupon > span:last-child {
+  margin: 10px 0;
+  color: #737373;
+}
+.offerImage {
+  height: 160px;
+}
+.offerImage > img {
+  height: 160px;
+  width: 100%;
+}
+.coupon:hover {
+  transform: scale(1.07);
+}
+
+.float {
+  display: flex;
+  position: absolute;
+  width: 40%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #fff5e5;
+  padding: 0 5px;
+}
+.float > div:not(div:first-child) {
+  margin-left: 8px;
+}
+.writingBox {
+  width: 60%;
+}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+.buttonBox > button {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+@media (min-width: 320px) {
+  .data {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+  .data > button {
+    padding: 15px 0px;
+  }
+  .data > input {
+    padding: 10px;
+  }
+  .writingConatiner > span {
+    margin-bottom: 18px;
+  }
+  .writingConatiner h2 {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .imgBox {
+    display: none;
+  }
+  .float {
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .buttonBox > button {
+    margin-top: 0px;
+  }
+  .flex {
+    grid-template-columns: repeat(1, 1fr);
+    width: 73%;
+  }
+  .buttonBox {
+    margin-top: -50px;
+    margin-bottom: 10px;
+  }
+  .writingBox {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  .float {
+    width: 100%;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+  .writingBox {
+    width: 60%;
+  }
+
+}
+
+@media (min-width: 900px) {
+  .data {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
+  }
+  .float {
+    width: 60%;
+    flex-direction: row;
+  }
+  .writingBox {
+    width: 50%;
+  }
+ 
+}
+
+@media (min-width: 1020px) {
+  .data {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+  .imgBox {
+    display: block;
+  }
+  .float {
+    width: 50%;
+    padding: 5px 20px;
+  }
+  .buttonBox {
+    margin-top: -50px;
+    margin-bottom: 10px;
+    border: 1px solid;
+  }
+}
