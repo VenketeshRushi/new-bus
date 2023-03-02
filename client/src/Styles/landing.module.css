@@ -175,14 +175,13 @@
 }
 
 .flexItems1 {
-  width: 18%;
   padding: 10px 20px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid rgb(221, 216, 216);
+  border: 2px solid rgb(221, 216, 216);
 }
 .itemimg1 {
   width: 50%;
@@ -329,7 +328,28 @@
   background-color: white;
   color: black;
 }
-@media (min-width: 320px) {
+
+.companyinfo {
+  border-right: 2px solid white;
+  width: 0ch;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 10s infinite alternate;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0ch;
+  }
+
+  50% {
+    width: 38.15ch;
+  }
+}
+
+
+
+@media all and (min-width: 319px) and (max-width:579px)  {
   .data {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
@@ -354,9 +374,11 @@
     width: 97%;
     padding: 5px;
     top: 112%;
+    display: flex;
+    flex-direction: column;
   }
   .Carousel {
-    margin-bottom: 115px;
+    margin-bottom: 270px;
   }
   .infodiv > div > div > button {
     margin-bottom: 15px;
@@ -378,13 +400,18 @@
   .reviewmain {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+    border: 1px solid;
+  }
+  .reviewmain > div{
+    border: 1px solid;
+    width: 80%;
   }
   .counts {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media (min-width: 580px) {
+@media all and (min-width: 580px) and (max-width:900px) {
   .reviewmain {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -392,9 +419,17 @@
   .counts {
     grid-template-columns: repeat(3, 1fr);
   }
+  .infodiv {
+    width: 80%;
+    top: 105%;
+    padding: 15px;
+  }
+  .Carousel {
+    margin-bottom: 130px;
+  }
 }
 
-@media (min-width: 900px) {
+@media all and (min-width: 901px) and (max-width:1019px) {
   .data {
     grid-template-columns: repeat(4, 1fr);
     gap: 0px;
@@ -414,14 +449,14 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .reviewmain {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .counts {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (min-width: 1020px) {
+@media (min-width: 1020px) and (max-width:2559px) {
   .data {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.4rem;
@@ -430,11 +465,12 @@
     display: block;
   }
   .infodiv {
-    width: 50%;
+    width: 60%;
     top: 102%;
+    padding: 15px;
   }
   .Carousel {
-    margin-bottom: 65px;
+    margin-bottom: 105px;
   }
   .flexContainer1 {
     grid-template-columns: repeat(4, 1fr);
@@ -444,6 +480,9 @@
   }
   .reviewmain {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .reviewmain > div{
+    width: 90%;
   }
   .counts {
     grid-template-columns: repeat(3, 1fr);

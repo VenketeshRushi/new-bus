@@ -14,7 +14,7 @@ function Reviews() {
         Customer Reviews
       </h2>
       <div className={styles.reviewmain}>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card">
           <img
             src={require("../../Images/pexels-photo-2381069.webp")}
             className="card-img-top"
@@ -28,7 +28,7 @@ function Reviews() {
             </p>
           </div>
         </div>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card">
           <img
             src={require("../../Images/pexels-photo-3778680.webp")}
             className="card-img-top"
@@ -42,7 +42,7 @@ function Reviews() {
             </p>
           </div>
         </div>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card">
           <img
             src={require("../../Images/pexels-photo-2381069.webp")}
             className="card-img-top"

@@ -1,3 +1,5 @@
+import styles from "../Styles/landing.module.css";
+
 function Footer() {
   return (
     <>
@@ -12,7 +14,9 @@ function Footer() {
           <div class="row">
             <div class="col-xl-3 col-lg-4 col-md-6">
               <div>
-                <h3><span style={{color:"#dc3545"}}>Red</span>Bus</h3>
+                <h3>
+                  <span style={{ color: "#dc3545" }}>Red</span>Bus
+                </h3>
                 <p class="mb-30 footer-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
                   soluta facilis eos quia optio iusto odit atque eum tempore,
@@ -76,9 +80,8 @@ function Footer() {
           </div>
           <div class="d-flex justify-content-center">
             <div class="copyright">
-              <p style={{ paddingTop: "12px" }}>
-                2020 ibibogroup All rights reserved{" "}
-                <p target="_blank">company</p>
+              <p className={styles.companyinfo}>
+                2023 ibibogroup All rights reserved company.
               </p>
             </div>
           </div>

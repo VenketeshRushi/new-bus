@@ -154,9 +154,9 @@ function Slider() {
             <div className="carousel-item active" data-bs-interval="3000">
               {" "}
               <img
-                src={require("../../Images/pexels-photo-1157386.jpeg")}
+                src={require("../../Images/photo-1590523277543-a94d2e4eb00b.avif")}
                 className="object-fit-cover"
-                style={{ height: "70vh", width: "100%" }}
+                style={{ height: "75vh", width: "100%" }}
                 alt="..."
                 onMouseOver={handelhover}
                 onMouseLeave={handelhoverout}
@@ -165,10 +165,10 @@ function Slider() {
             <div className="carousel-item" data-bs-interval="3000">
               {" "}
               <img
-                src={require("../../Images/pexels-photo-3935702.jpeg")}
+                src={require("../../Images/photo-1544091441-9cca7fbe8923.avif")}
                 className="object-fit-cover"
                 alt="..."
-                style={{ height: "70vh", width: "100%" }}
+                style={{ height: "75vh", width: "100%" }}
                 onMouseOver={handelhover}
                 onMouseLeave={handelhoverout}
               />
@@ -176,10 +176,10 @@ function Slider() {
             <div className="carousel-item" data-bs-interval="3000">
               {" "}
               <img
-                src={require("../../Images/pexels-photo-4452209.jpeg")}
+                src={require("../../Images/photo-1600073957488-45273df3d014.avif")}
                 className="object-fit-cover"
                 alt="..."
-                style={{ height: "70vh", width: "100%" }}
+                style={{ height: "75vh", width: "100%" }}
                 onMouseOver={handelhover}
                 onMouseLeave={handelhoverout}
               />
