@@ -1,9 +1,8 @@
 import styles from "../../Styles/landing.module.css";
-
-const Coupon = () => {
+function Info() {
   return (
-    <div className={styles.couponContainer}>
-      <div className={styles.flex}>
+    <>
+      <div className={styles.infogrid}>
         <div className={styles.coupon}>
           <span>save upto rs 150</span>
           <span className={styles.offerImage}>
@@ -35,25 +34,8 @@ const Coupon = () => {
           <span>Use code FIRST</span>
         </div>
       </div>
-      <div className={styles.float}>
-        <div className={styles.imgBox1}>
-          <img
-            src="https://s3.rdbuz.com/Images/webplatform/measures/safetyplus.svg"
-            alt="shield"
-          />
-        </div>
-        <div className={styles.writingBox}>
-          <h4>Introducing Safety+ Program</h4>
-          <p>A unique certification program that ensures safety in all buses</p>
-        </div>
-        <div className={styles.buttonBox}>
-          <div>
-            <button>know More</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
-};
+}
 
-export default Coupon;
+export default Info;

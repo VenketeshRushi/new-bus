@@ -4,6 +4,7 @@ const cors = require("cors");
 const port = process.env.PORT || 8080;
 
 const cityRouter = require("./src/controllers/city.controller");
+const connect = require("./src/configs/db");
 
 app.use(cors());
 app.use(express.json());

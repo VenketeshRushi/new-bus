@@ -1,12 +1,78 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../Styles/landing.module.css";
 import Alert from "./Alert";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function Slider() {
   const [hover, sethover] = useState(false);
   const [source, setsource] = useState("");
   const [destination, setdestination] = useState("");
   const [date, setdate] = useState("");
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [show1, setShow1] = useState(false);
+  const [output, setOutput] = useState([]);
+  const [showName, setShowNames] = useState(false);
+  const [outputdes, setOutputdes] = useState([]);
+  const [showNamedes, setShowNamesdes] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (source === "") {
+      setShowNames(false);
+      return;
+    }
+    let timerID = setTimeout(() => {
+      handleGetRequest();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerID);
+    };
+  }, [source]);
+
+  useEffect(() => {
+    if (destination === "") {
+      setShowNamesdes(false);
+      return;
+    }
+    let timerID = setTimeout(() => {
+      handleGetRequestdes();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerID);
+    };
+  }, [destination]);
+
+  const handleGetRequest = async () => {
+    try {
+      let res = await axios.post("http://localhost:8080/city", {
+        source,
+      });
+      res = res.data;
+
+      setOutput(res);
+      setShowNames(true);
+      console.log(output);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleGetRequestdes = async () => {
+    try {
+      let res = await axios.post("http://localhost:8080/city", {
+        destination,
+      });
+      res = res.data;
+
+      setOutputdes(res);
+      setShowNamesdes(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   function handelhover() {
     sethover(true);
@@ -19,35 +85,63 @@ function Slider() {
   function handleclicked() {
     if (date === "" || destination === "" || source === "") {
       setShow(true);
-      console.log("hi");
+      setsource("");
+      setdestination("");
+      return;
     }
+    if (source === destination) {
+      setShow1(true);
+      return;
+    }
+    setsource("");
     getcityinfo(source, destination, date);
   }
 
-  async function getcityinfo(q) {
-    let res = await axios.post("http://localhost:8080/city", {
-      source,
-      destination,
-      date,
-    });
-    console.log(res);
+  async function getcityinfo(source, destination, date) {
+    console.log(source, destination, date);
+    navigate(`/selectbus/${source}/${destination}`);
+    try {
+      // let res = await axios.post("http://localhost:8080/city/showdata", {
+      //   source,
+      //   destination,
+      //   date,
+      // });
+      // console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  function handelChnage(e) {
-    console.log(e.target.value);
-    // setTimeout(() => {
-    //   getcityinfo(source);
-    // }, 500);
+  function handlecityclicked(name) {
+    setsource(name);
+    setShowNames(false);
+    setTimeout(() => {
+      setShowNames(false);
+    }, [1100]);
   }
-
+  function handlecityclicked1(name) {
+    setdestination(name);
+    setShowNamesdes(false);
+    setTimeout(() => {
+      setShowNamesdes(false);
+    }, [1100]);
+  }
   return (
     <>
       {show ? (
         <Alert
           variant={"info"}
-          data={"Fill All The Details"}
+          data={"Please Fill All The Details"}
           setShow={setShow}
           show={show}
+        />
+      ) : null}
+      {show1 ? (
+        <Alert
+          variant={"info"}
+          data={"Source And Destination Can't Be Same"}
+          setShow={setShow1}
+          show={show1}
         />
       ) : null}
       <div className={styles.Carousel}>
@@ -97,6 +191,7 @@ function Slider() {
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="prev"
+              onMouseOver={handelhover}
             >
               <span
                 className="carousel-control-prev-icon"
@@ -113,6 +208,7 @@ function Slider() {
               type="button"
               data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="next"
+              onMouseOver={handelhover}
             >
               <span
                 className="carousel-control-next-icon"
@@ -130,19 +226,73 @@ function Slider() {
             placeholder="Source"
             value={source}
             onChange={(e) => setsource(e.target.value)}
+            onCh
+            className={styles.inputsource}
           />
+          {showName && output.length != 0 && (
+            <div className={styles.names}>
+              {output?.map((item) => (
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handlecityclicked(item.name)}
+                >
+                  <h6 style={{ paddingTop: "5px", paddingLeft: "5px" }}>
+                    {item.name},{item.state}
+                  </h6>
+                  <hr />
+                </div>
+              ))}
+            </div>
+          )}
           <input
             type="text"
             placeholder="Destination"
             value={destination}
             onChange={(e) => setdestination(e.target.value)}
+            className={styles.inputsource1}
           />
+          {showNamedes && outputdes.length != 0 && (
+            <div className={styles.names1}>
+              {outputdes?.map((item) => (
+                <div
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handlecityclicked1(item.name)}
+                >
+                  <h6 style={{ paddingTop: "5px", paddingLeft: "5px" }}>
+                    {item.name},{item.state}
+                  </h6>
+                  <hr />
+                </div>
+              ))}
+            </div>
+          )}
           <input
             type="date"
             value={date}
             onChange={(e) => setdate(e.target.value)}
           />
           <button onClick={handleclicked}>Search</button>
+        </div>
+        <div className={styles.infodiv}>
+          <div>
+            {" "}
+            <img
+              src="https://s3.rdbuz.com/Images/webplatform/measures/safetyplus.svg"
+              alt="shield"
+            />
+          </div>
+          <div>
+            <h4>Introducing Safety+ Program</h4>
+            <p>
+              A unique certification program that ensures safety in all buses
+            </p>
+          </div>
+          <div>
+            <div>
+              {" "}
+              <button>know More</button>
+            </div>
+          </div>
         </div>
       </div>
     </>

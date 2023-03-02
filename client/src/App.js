@@ -1,16 +1,10 @@
 import "./App.css";
-import Navbar from "./Pages/Navbar";
-import Slider from "./Components/Landing/Slider";
-import Safety from "./Components/Landing/Safety";
-import Coupon from "./Components/Landing/Coupon";
+import AllRoutes from "./Routes/AllRoutes";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Slider />
-      <Coupon />
-      <Safety />
+      <AllRoutes/>
     </div>
   );
 }
