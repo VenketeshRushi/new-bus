@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../Styles/login.module.css";
 import { useDispatch } from "react-redux";
-import axios from "axios";
-import { error, success } from "../Utils/notification";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { loginAPI } from "../Redux/authentication/auth.action";
 
-function Signup() {
+function Signin() {
   const initialData = {
     email: "",
     password: "",
@@ -24,32 +23,14 @@ function Signup() {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (signUpcreds.email === "" || signUpcreds.password === "") {
-      error("Plaese Fill Details");
-    } else {
-      try {
-        let response = await axios.post(
-          "http://localhost:8080/user/signup",
-          signUpcreds
-        );
-        console.log(response);
-        if (response.data.status === "Failed") {
-          error(response.data.message);
-        } else {
-          navigate("/login");
-          success(response.data.message);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  const handleSubmit = async () => {
+    dispatch(loginAPI(signUpcreds, navigate));
   };
+
   return (
     <>
       <div className={styles.login}>
-        <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
+        <h1 className="h3 mb-3 fw-normal">Sign In</h1>
         <div>
           <p style={{ textAlign: "left", marginBottom: "0px" }}>Email</p>
           <input
@@ -79,17 +60,20 @@ function Signup() {
             </span>
           </div>
         </div>
-        <div>
+        <div style={{ textAlign: "Left" }}>
           <p>
-            Already a user ? <Link to={"/signin"}>SignIn</Link>
+            Dont have account ? <Link to={"/signup"}>SignUp</Link>
+          </p>
+          <p>
+            <Link>Forgot Password</Link>
           </p>
         </div>
         <button className="w-100 btn btn-lg btn-primary" onClick={handleSubmit}>
-          Sign up
+          Sign In
         </button>
       </div>
     </>
   );
 }
 
-export default Signup;
+export default Signin;
