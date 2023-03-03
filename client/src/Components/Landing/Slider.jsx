@@ -15,6 +15,7 @@ function Slider() {
   const [showName, setShowNames] = useState(false);
   const [outputdes, setOutputdes] = useState([]);
   const [showNamedes, setShowNamesdes] = useState(false);
+  const [show2, setShow2] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -85,8 +86,6 @@ function Slider() {
   function handleclicked() {
     if (date === "" || destination === "" || source === "") {
       setShow(true);
-      setsource("");
-      setdestination("");
       return;
     }
     if (source === destination) {
@@ -99,14 +98,22 @@ function Slider() {
 
   async function getcityinfo(source, destination, date) {
     console.log(source, destination, date);
-    navigate(`/selectbus/${source}/${destination}`);
+
     try {
-      // let res = await axios.post("http://localhost:8080/city/showdata", {
-      //   source,
-      //   destination,
-      //   date,
-      // });
-      // console.log(res);
+      let res = await axios.post("http://localhost:8080/city/showcity", {
+        source,
+        destination,
+        date,
+      });
+      console.log(res);
+      if (res.data.status === "success") {
+        navigate({
+          pathname: "/selectbus",
+          search: `?from=${source}&to=${destination}&date=${date}`,
+        });
+      } else {
+        setShow2(true);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -126,6 +133,11 @@ function Slider() {
       setShowNamesdes(false);
     }, [1100]);
   }
+
+  function handledateclicked() {
+    setShowNamesdes(false);
+    setShowNames(false);
+  }
   return (
     <>
       {show ? (
@@ -142,6 +154,14 @@ function Slider() {
           data={"Source And Destination Can't Be Same"}
           setShow={setShow1}
           show={show1}
+        />
+      ) : null}
+      {show2 ? (
+        <Alert
+          variant={"info"}
+          data={"City Not Found"}
+          setShow={setShow2}
+          show={show2}
         />
       ) : null}
       <div className={styles.Carousel}>
@@ -270,6 +290,7 @@ function Slider() {
             type="date"
             value={date}
             onChange={(e) => setdate(e.target.value)}
+            onClick={() => handledateclicked()}
           />
           <button onClick={handleclicked}>Search</button>
         </div>

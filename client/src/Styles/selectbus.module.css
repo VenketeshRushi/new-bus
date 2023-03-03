@@ -1,0 +1,73 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.filter {
+  width: 20%;
+}
+.busdata {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.busdata > div {
+  width: 40%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.busdata > div > button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+.busdata > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  width: 80%;
+}
+
+.busdata  h6{
+  text-align: left;
+  font-weight: 300;
+  margin-left: 35px;
+}
+
+.compartment {
+  text-align: left;
+  padding-left: 25px;
+}
+.compmaintment > h4 {
+  margin-bottom: 12px;
+}
+.compartment > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.compartment > div > input {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+.compartment > div label {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 14px;
+}

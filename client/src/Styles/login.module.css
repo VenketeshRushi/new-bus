@@ -1,0 +1,28 @@
+.login {
+  width: 30%;
+  margin: auto;
+}
+.login > div {
+  margin-bottom: 10px;
+}
+
+@media all and (min-width: 319px) and (max-width: 579px) {
+  .login {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media all and (min-width: 580px) and (max-width: 900px) {
+  .login {
+    width: 50%;
+    margin: auto;
+  }
+}
+
+@media all and (min-width: 901px) and (max-width: 1019px) {
+  .login {
+    width: 40%;
+    margin: auto;
+  }
+}

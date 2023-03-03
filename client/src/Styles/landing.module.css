@@ -400,18 +400,37 @@
   .reviewmain {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
-    border: 1px solid;
   }
   .reviewmain > div{
-    border: 1px solid;
     width: 80%;
   }
   .counts {
     grid-template-columns: repeat(1, 1fr);
   }
+  .names{
+    top: 19.19%;
+    left: 1;
+    z-index: 1;
+
+  }
+  .names1{
+    top: 44.5%;
+    left: 0;
+    z-index: 1;
+  }
 }
 
 @media all and (min-width: 580px) and (max-width:900px) {
+  .data {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+  .data > button {
+    padding: 15px 0px;
+  }
+  .data > input {
+    padding: 10px;
+  }
   .reviewmain {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
@@ -426,6 +445,16 @@
   }
   .Carousel {
     margin-bottom: 130px;
+  }
+  .names{
+    top: 19%;
+    left: 1%;
+    z-index: 1;
+  }
+  .names1{
+    top: 45%;
+    left: 1%;
+    z-index: 1;
   }
 }
 

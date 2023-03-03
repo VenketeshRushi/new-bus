@@ -36,4 +36,25 @@ app.post("/", async (req, res) => {
   }
 });
 
+app.post("/showcity", async (req, res) => {
+  console.log(req.body)
+  try {
+    let fromcheck= await CityModel.findOne({name:req.body.source})
+    let destinationcheck=await CityModel.findOne({name:req.body.destination})
+    console.log(fromcheck)
+    console.log(destinationcheck)
+    if(fromcheck){
+      if(destinationcheck){
+        return res.send({status:"success",data:"Buses In Your City Are Here"})
+      }else{
+        return res.send({status:"failed",data:"destination is not found"})
+      }
+    }else{
+      return res.send({status:"failed",data:"source is not found"})
+    }
+  } catch (error) {
+    return res.send(error.message)
+  }
+})
+
 module.exports = app;

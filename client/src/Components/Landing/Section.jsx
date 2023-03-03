@@ -12,7 +12,7 @@ function Section() {
           <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-6">
               <div>
-                <h4>Bus Hire Cities</h4>
+                <h4 style={{color:"black"}}>Bus Hire Cities</h4>
                 <ul class="list-unstyled">
                   <li>
                     <p class="text-decoration-none">Bus Hire in Ahmedabad</p>
@@ -50,7 +50,7 @@ function Section() {
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6">
               <div>
-                <h4>Tempo travellers in other cities</h4>
+                <h4 style={{color:"black"}}>Tempo Traveller in Cities</h4>
                 <ul class="list-unstyled">
                   <li>
                     <p class="text-decoration-none">
@@ -77,7 +77,7 @@ function Section() {
             </div>
             <div class="col-xl-3 col-lg-3 col-md-6">
               <div>
-                <h4 style={{ visibility: "collapse" }}>
+                <h4 style={{ visibility: "collapse",marginBottom:"-30px" }}>
                   Tempo travellers in other cities
                 </h4>
                 <ul class="list-unstyled">
