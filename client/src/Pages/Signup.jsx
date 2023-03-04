@@ -38,7 +38,7 @@ function Signup() {
         if (response.data.status === "Failed") {
           error(response.data.message);
         } else {
-          navigate("/login");
+          navigate("/signin");
           success(response.data.message);
         }
       } catch (error) {

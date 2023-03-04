@@ -8,6 +8,7 @@ import Signin from "../Pages/Signin";
 import Signup from "../Pages/Signup";
 import Myticket from "../Pages/Myticket";
 import { Private } from "./Private";
+import Bookseat from "../Pages/Bookseat";
 
 function AllRoutes() {
   return (
@@ -17,11 +18,12 @@ function AllRoutes() {
         <Route path="/" element={<Home />}></Route>
         <Route path="/signin" element={<Signin />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/selectbus" element={<SelectBus />} />
         <Route
-          path="/selectbus"
+          path="/bookticket/:id"
           element={
             <Private>
-              <SelectBus />
+              <Bookseat />
             </Private>
           }
         />

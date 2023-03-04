@@ -52,7 +52,6 @@ function Slider() {
         source,
       });
       res = res.data;
-
       setOutput(res);
       setShowNames(true);
       console.log(output);

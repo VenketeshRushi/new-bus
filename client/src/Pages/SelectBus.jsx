@@ -5,11 +5,16 @@ import axios from "axios";
 import { AiTwotoneStar } from "react-icons/ai";
 import { BiArrowFromLeft } from "react-icons/bi";
 import { saveData } from "../Redux/filter/filter.actiontypes";
+import { removeall } from "../Redux/ticket/ticket.action";
 function SelectBus() {
   let [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
   const [backupdata, setBackupData] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(removeall());
+  }, []);
 
   const initialData = {
     SEATER: false,
@@ -85,15 +90,10 @@ function SelectBus() {
   }
 
   async function handlebook(ele) {
-    navigate(`/details/${ele._id}`);
-    // try {
-    //   let res = await axios.post("http://localhost:8080/bus/saveticket", {
-    //     ele,
-    //   });
-    //   console.log(res);
-    // } catch (error) {
-    //   alert(error.message);
-    // }
+    navigate({
+      pathname: `/bookticket/${ele._id}`,
+      search: `?&date=${searchParams.get("date")}`,
+    });
   }
 
   return (
@@ -238,7 +238,7 @@ function SelectBus() {
                       ))}
                   </h5>
                 </div>
-                <button onClick={() => handlebook(ele)}>Book Now</button>
+                <button onClick={() => handlebook(ele)}>View Seats</button>
               </div>
             );
           })}

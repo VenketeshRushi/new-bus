@@ -1,0 +1,178 @@
+.maincontainer {
+  width: max-content;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(3, 80, 80, 0.25) 0px 50px 100px -20px,
+    rgba(243, 7, 7, 0.3) 0px 30px 60px -30px;
+}
+.single {
+  width: max-content;
+}
+.single {
+  width: 60px;
+  height: 30px;
+  border: 1px solid;
+  background-color: gray;
+  color: red;
+}
+.singlerow {
+  display: flex;
+  gap: 20px;
+}
+
+.maincontainer {
+  width: max-content;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.doublerow {
+  display: flex;
+  gap: 20px;
+}
+.btn {
+  background-color: #b30517;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  border: none;
+  margin-top: 5px;
+}
+
+.busdata {
+  border: 1px solid;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.busdata > div {
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 10px;
+}
+.busdata > div > button {
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+}
+
+.busdata > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  width: 80%;
+}
+
+.busdata h6 {
+  text-align: left;
+  font-weight: 300;
+  margin-left: 35px;
+}
+
+.seats {
+  width: 60%;
+}
+
+.main {
+  width: 80%;
+  display: flex;
+  align-items: flex-start;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.seatlb {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.selectedseats {
+  float: right;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.fair {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3e3e52;
+  margin-top: 0.9375rem;
+}
+
+.summarycontainer {
+  font-size: 0.875rem;
+  font-weight: 200;
+  color: #8f8f8f;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  width: 100%;
+}
+.fareslb {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.summaryvalue {
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-align: right;
+  color: #3e3e52;
+}
+.summarycurrency {
+  margin-right: 5px;
+}
+
+@media all and (min-width: 319px) and (max-width: 579px) {
+  .main {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+  .busdata {
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+  }
+  .busdata > div {
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 580px) and (max-width: 900px) {
+  .main {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+  }
+  .busdata {
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+  }
+}

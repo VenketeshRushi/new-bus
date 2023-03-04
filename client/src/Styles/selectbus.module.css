@@ -4,6 +4,7 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 25px;
+  margin-bottom: 32px;
 }
 
 .filter {
@@ -44,7 +45,7 @@
   width: 80%;
 }
 
-.busdata  h6{
+.busdata h6 {
   text-align: left;
   font-weight: 300;
   margin-left: 35px;
@@ -70,4 +71,32 @@
 .compartment > div label {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 14px;
+}
+
+@media all and (min-width: 319px) and (max-width: 579px) {
+  .filter {
+    display: none;
+  }
+  .busdata {
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+  }
+  .busdata > div {
+    width: 100%;
+  }
+}
+
+@media all and (min-width: 580px) and (max-width: 900px) {
+  .filter {
+    display: none;
+  }
+  .busdata {
+    flex-direction: column;
+    width: 65%;
+    margin: auto;
+  }
+  .busdata > div {
+    width: 100%;
+  }
 }

@@ -17,6 +17,8 @@
   .login {
     width: 90%;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }
 
@@ -24,6 +26,8 @@
   .login {
     width: 50%;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }
 
@@ -31,5 +35,7 @@
   .login {
     width: 40%;
     margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 }

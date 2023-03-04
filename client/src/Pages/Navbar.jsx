@@ -106,18 +106,6 @@ const Navbar = () => {
                 >
                   Sign In
                 </button>
-                <button
-                  style={{
-                    borderRadius: "10px",
-                    border: "2px solid",
-                    marginLeft: "8px",
-                    color: "white",
-                  }}
-                  onClick={() => navigate("/signup")}
-                  className="btn btn-outline-success"
-                >
-                  Sign Up
-                </button>
               </div>
             )}
           </div>

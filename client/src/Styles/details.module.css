@@ -1,6 +1,28 @@
-.details{
-    border: 1px solid;
-    width: 50%;
+.details {
+  width: 50%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.details button {
+  width: 100%;
+}
+
+@media all and (min-width: 319px) and (max-width: 579px) {
+  details {
+    width: 100%;
     margin: auto;
-    background-color: aqua;
+  }
+}
+
+@media all and (min-width: 580px) and (max-width: 900px) {
+  details {
+    width: 80%;
+    margin: auto;
+  }
 }

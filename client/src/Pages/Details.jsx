@@ -1,4 +1,7 @@
-import styles from "../Styles/landing.module.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { removeall } from "../Redux/ticket/ticket.action";
+import styles from "../Styles/details.module.css";
 function Details() {
   return (
     <div className={styles.details}>

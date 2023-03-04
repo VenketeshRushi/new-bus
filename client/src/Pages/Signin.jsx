@@ -4,6 +4,7 @@ import styles from "../Styles/login.module.css";
 import { useDispatch } from "react-redux";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { loginAPI } from "../Redux/authentication/auth.action";
+import { error } from "../Utils/notification";
 
 function Signin() {
   const initialData = {
@@ -24,6 +25,9 @@ function Signin() {
   };
 
   const handleSubmit = async () => {
+    if (signUpcreds.email === "" || signUpcreds.password === "") {
+      return error("Please enter all required fields");
+    }
     dispatch(loginAPI(signUpcreds, navigate));
   };
 
