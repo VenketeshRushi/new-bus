@@ -1,58 +1,23 @@
-import { useEffect, useState, useReducer } from "react";
+import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "../Styles/selectbus.module.css";
 import axios from "axios";
 import { AiTwotoneStar } from "react-icons/ai";
 import { BiArrowFromLeft } from "react-icons/bi";
-import { saveData } from "../Redux/filter/filter.actiontypes";
+import { saveDatafilter } from "../Redux/filter/filter.action";
 import { removeall } from "../Redux/ticket/ticket.action";
+import Filters from "../Components/Seats/Filters";
+import { useDispatch, useSelector } from "react-redux";
 function SelectBus() {
   let [searchParams, setSearchParams] = useSearchParams();
-  const [data, setData] = useState([]);
-  const [backupdata, setBackupData] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const dataredux = useSelector((state) => state.filter.data);
 
   useEffect(() => {
     dispatch(removeall());
   }, []);
-
-  const initialData = {
-    SEATER: false,
-    SLEEPER: false,
-    AC: false,
-    NONAC: false,
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "seater":
-        return {
-          ...state,
-          SEATER: !state.SEATER,
-        };
-      case "sleeper":
-        return {
-          ...state,
-          SLEEPER: !state.SLEEPER,
-        };
-      case "ac":
-        return {
-          ...state,
-          AC: !state.AC,
-        };
-      case "nonac":
-        return {
-          ...state,
-          NONAC: !state.NONAC,
-        };
-      default:
-        return state;
-    }
-  };
-
-  const [change, setChange] = useState(initialData);
-
-  const [state, dispatch] = useReducer(reducer, initialData);
 
   useEffect(() => {
     let from = searchParams.get("from");
@@ -60,6 +25,7 @@ function SelectBus() {
     let date = searchParams.get("date");
     getdata(from, to, date);
   }, []);
+
   async function getdata(from, to, date) {
     console.log(from, to, date);
     try {
@@ -68,24 +34,10 @@ function SelectBus() {
         to,
         date,
       });
-      setData(res.data);
-      setBackupData(res.data);
-      console.log(data);
+
+      dispatch(saveDatafilter(res.data));
     } catch (error) {
       console.log(error.message);
-    }
-  }
-
-  function handlechange(e) {
-    const { name } = e.target;
-    if (name === "SEATER") {
-      dispatch({ type: "seater" });
-    } else if (name === "SLEEPER") {
-      dispatch({ type: "sleeper" });
-    } else if (name === "AC") {
-      dispatch({ type: "AC" });
-    } else if (name === "NONAC") {
-      dispatch({ type: "NONAC" });
     }
   }
 
@@ -109,96 +61,13 @@ function SelectBus() {
             FILTERS
           </h5>
           <hr />
-          <div className={styles.compartment}>
-            <p>BUS TYPES</p>
-            <div>
-              <input
-                checked={change.SEATER}
-                name="SEATER"
-                onChange={handlechange}
-                // onChange={() => dispatch({ type: "seater" })}
-                type="checkbox"
-              />
-              <label>SEATER</label>
-            </div>
-            <div>
-              <input
-                checked={change.SLEEPER}
-                name="SLEEPER"
-                onChange={handlechange}
-                // onChange={() => dispatch({ type: "sleeper" })}
-                type="checkbox"
-              />
-              <label>SLEEPER</label>
-            </div>
-            <div>
-              <input
-                checked={change.AC}
-                name="AC"
-                onChange={handlechange}
-                // onChange={() => dispatch({ type: "ac" })}
-                type="checkbox"
-              />
-              <label>AC</label>
-            </div>
-            <div>
-              <input
-                checked={change.NONAC}
-                name="NONAC"
-                onChange={handlechange}
-                // onChange={() => dispatch({ type: "nonac" })}
-                type="checkbox"
-              />
-              <label>NON-AC</label>
-            </div>
-            {/* <button onClick={() => handleclicked()}>Apply</button> */}
-          </div>
-          <hr />
-          <div className={styles.compartment}>
-            <p>DEPARTURE TIME</p>
-            <div>
-              <input type="checkbox" />
-              <label>Before 6 am</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>6 am to 12 pm</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>12pm to 6 pm</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>After 6 pm</label>
-            </div>
-          </div>
-          <hr />
-          <div className={styles.compartment}>
-            <p>ARRIVAL TIME</p>
-            <div>
-              <input type="checkbox" />
-              <label>Before 6 am</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>6 am to 12 pm</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>12pm to 6 pm</label>
-            </div>
-            <div>
-              <input type="checkbox" />
-              <label>After 6 pm</label>
-            </div>
-          </div>
+          <Filters />
           <hr />
         </div>
         <div className={styles.busdata}>
-          {data?.map((ele) => {
+          {dataredux?.map((ele,i) => {
             return (
-              <div>
+              <div key={i}>
                 <h5>
                   {ele.companyname.charAt(0).toUpperCase() +
                     ele.companyname.slice(1)}{" "}
@@ -211,11 +80,15 @@ function SelectBus() {
                     <BiArrowFromLeft />
                   </p>
                   <p>{ele.to}</p>
-                </div>
+                </div>{" "}
                 <div>
                   {" "}
-                  <p>{ele.aminites1}</p>
-                  <p>{ele.aminites2}</p>
+                  {ele.aminites.map((e,i) => (
+                    <div key={i}>
+                      {" "}
+                      <p>{e}</p>
+                    </div>
+                  ))}
                 </div>
                 <hr />
                 <h6>Arrival Time : {ele.arrival}</h6>

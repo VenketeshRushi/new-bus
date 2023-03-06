@@ -10,56 +10,56 @@ function Footer() {
           color: "white",
         }}
       >
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-3 col-lg-4 col-md-6">
+        <div className="container">
+          <div className="row">
+            <div className="col-xl-3 col-lg-4 col-md-6">
               <div>
                 <h3>
                   <span style={{ color: "#dc3545" }}>Red</span>Bus
                 </h3>
-                <p class="mb-30 footer-desc">
+                <p className="mb-30 footer-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
                   soluta facilis eos quia optio iusto odit atque eum tempore,
                   quisquam officiis vero veniam hic,
                 </p>
               </div>
             </div>
-            <div class="col-xl-2 offset-xl-1 col-lg-2 col-md-6">
-              <div class="">
+            <div className="col-xl-2 offset-xl-1 col-lg-2 col-md-6">
+              <div className="">
                 <h4>Book</h4>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   <li>
-                    <p class="text-decoration-none">Bus Ticket</p>
+                    <p className="text-decoration-none">Bus Ticket</p>
                   </li>
                   <li>
-                    <p class="text-decoration-none">Bus hire</p>
+                    <p className="text-decoration-none">Bus hire</p>
                   </li>
                   <li>
-                    <p class="text-decoration-none">Tempo Travellers</p>
+                    <p className="text-decoration-none">Tempo Travellers</p>
                   </li>
                   <li>
-                    <p class="text-decoration-none">Car Rentals</p>
+                    <p className="text-decoration-none">Car Rentals</p>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
+            <div className="col-xl-3 col-lg-3 col-md-6">
               <div>
                 <h4>About</h4>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   <li>
-                    <p class="text-decoration-none">About us</p>
+                    <p className="text-decoration-none">About us</p>
                   </li>
                   <li>
-                    <p class="text-decoration-none">Contact us</p>
+                    <p className="text-decoration-none">Contact us</p>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-6">
+            <div className="col-xl-3 col-lg-3 col-md-6">
               <div>
                 <h4>Info</h4>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   <li>
                     <p>T & C</p>
                   </li>
@@ -78,8 +78,8 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-center">
-            <div class="copyright">
+          <div className="d-flex justify-content-center">
+            <div className="copyright">
               <p className={styles.companyinfo}>
                 2023 ibibogroup All rights reserved company.
               </p>

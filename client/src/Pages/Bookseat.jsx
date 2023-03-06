@@ -10,8 +10,12 @@ function Bookseat() {
   let [searchParams, setSearchParams] = useSearchParams();
   let param = useParams();
   const navigate = useNavigate();
+
   const [data, setdata] = useState([]);
+
   const ticket = useSelector((state) => state.ticket.ticketNo);
+  console.log("hieel",ticket);
+
   useEffect(() => {
     getdata();
   }, []);
@@ -21,10 +25,12 @@ function Bookseat() {
       let res = await axios.post("http://localhost:8080/bus/one", {
         id: param.id,
       });
-      console.log(res);
+      console.log("OK", res.data);
+      console.log("before", data);
       setdata(res.data);
+      console.log("after", data)
     } catch (error) {
-      console.log(error.messagei);
+      console.log(error.message);
     }
   }
   function handleClicked() {
@@ -37,6 +43,11 @@ function Bookseat() {
       error("Please select Seat First");
     }
   }
+
+
+  console.log("DATAAAA", data);
+
+
   return (
     <div className={styles.main}>
       <div className={styles.seats}>
@@ -99,35 +110,35 @@ function Bookseat() {
       </div>
       <div className={styles.busdata}>
         {" "}
-        {data?.map((ele) => {
+        {data.map((ele) => {
           return (
             <div>
               <h5>
-                {ele.companyname.charAt(0).toUpperCase() +
-                  ele.companyname.slice(1)}{" "}
+                {ele?.companyname.charAt(0).toUpperCase() +
+                  ele?.companyname.slice(1)}{" "}
                 Travels
               </h5>
               <div>
                 {" "}
-                <p>{ele.from}</p>
+                <p>{ele?.from}</p>
                 <p>
                   <BiArrowFromLeft />
                 </p>
-                <p>{ele.to}</p>
+                <p>{ele?.to}</p>
               </div>
               <hr />
               <h6>Arrival Time : {ele.arrival}</h6>
               <h6>Departure Time : {ele.departure}</h6>
               <hr />
-              <h6>Email : {ele.email}</h6>
-              <h6>Phone : {ele.phone}</h6>
+              <h6>Email : {ele?.email}</h6>
+              <h6>Phone : {ele?.phone}</h6>
               <hr />
               <div className={styles.seatno}>
                 <span className={styles.seatlb}>Seat No.</span>
                 <div className={styles.selectedseats}>
-                  {ticket?.map((ele) => {
-                    return <span> {ele}, </span>;
-                  })}
+                  {ticket?.map((ele,i) => {
+                    return <span key={i}> {ele}, </span>;
+                  })} 
                 </div>
               </div>
               <hr />

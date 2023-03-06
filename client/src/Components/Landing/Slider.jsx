@@ -245,15 +245,15 @@ function Slider() {
             placeholder="Source"
             value={source}
             onChange={(e) => setsource(e.target.value)}
-            onCh
             className={styles.inputsource}
           />
           {showName && output.length != 0 && (
             <div className={styles.names}>
-              {output?.map((item) => (
+              {output?.map((item,i) => (
                 <div
                   style={{ cursor: "pointer" }}
                   onClick={() => handlecityclicked(item.name)}
+                  key={i}
                 >
                   <h6 style={{ paddingTop: "5px", paddingLeft: "5px" }}>
                     {item.name},{item.state}
@@ -272,10 +272,11 @@ function Slider() {
           />
           {showNamedes && outputdes.length != 0 && (
             <div className={styles.names1}>
-              {outputdes?.map((item) => (
+              {outputdes?.map((item,i) => (
                 <div
                   style={{ cursor: "pointer" }}
                   onClick={() => handlecityclicked1(item.name)}
+                  key={i}
                 >
                   <h6 style={{ paddingTop: "5px", paddingLeft: "5px" }}>
                     {item.name},{item.state}

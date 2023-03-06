@@ -28,6 +28,7 @@ app.post("/getall", async (req, res) => {
 });
 
 app.post("/one", async (req, res) => {
+  console.log("hi")
   try {
     let bus = await BusModel.find({ _id: req.body.id });
     return res.send(bus);

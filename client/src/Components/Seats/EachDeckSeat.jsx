@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeData, saveData } from "../../Redux/ticket/ticket.action";
+import { removeData, saveData1 } from "../../Redux/ticket/ticket.action";
 
 export default function EachDeckSeat({ id }) {
   const [select, setSelect] = useState(false);
@@ -12,7 +12,7 @@ export default function EachDeckSeat({ id }) {
       console.log("removing", id);
       setSelect(!select);
     } else {
-      dispatch(saveData(id));
+      dispatch(saveData1(id));
       console.log("saving", id);
       setSelect(!select);
     }

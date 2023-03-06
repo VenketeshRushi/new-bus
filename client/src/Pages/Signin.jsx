@@ -47,7 +47,7 @@ function Signin() {
         </div>
         <p style={{ textAlign: "left", marginBottom: "0px" }}>Password</p>
         <div className="form-floating">
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <input
               type={showpassword ? "text" : "password"}
               className="form-control"
@@ -56,7 +56,7 @@ function Signin() {
               onChange={hanldeChange}
             />
             <span
-              class="input-group-text"
+              className="input-group-text"
               style={{ cursor: "pointer" }}
               onClick={() => setshowpassword(!showpassword)}
             >
