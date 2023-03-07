@@ -33,12 +33,12 @@ function Bookseat() {
       console.log(error.message);
     }
   }
-  function handleClicked() {
+  function handleClicked(ele) {
     if (ticket.length > 0) {
       navigate({
         pathname: `/details/${param.id}`,
-        search: `?&date=${searchParams.get("date")}&ticket=${[...ticket]}`,
-      });
+        search: `?&date=${searchParams.get("date")}&ticket=${[...ticket]}&amount=${ticket.length * ele}`,
+      }); 
     } else {
       error("Please select Seat First");
     }
@@ -79,7 +79,7 @@ function Bookseat() {
             </div>
           </div>
         </div>
-        <div style={{ textAlign: "left", marginTop: "20px" }}>
+        <div style={{ textAlign: "left", marginTop: "25px",width:"100%" }}>
           <h4>Upper Deck</h4>
           <div className={styles.maincontainer}>
             <div className={styles.singlerow}>
@@ -150,7 +150,7 @@ function Bookseat() {
                   <span>{ticket.length * ele.price}</span>
                 </span>
               </div>
-              <button className={styles.btn} onClick={() => handleClicked()}>
+              <button className={styles.btn} onClick={() => handleClicked(ele.price)}>
                 Proceed to book
               </button>
             </div>

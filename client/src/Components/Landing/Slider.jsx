@@ -1,21 +1,18 @@
 import { useEffect, useState } from "react";
 import styles from "../../Styles/landing.module.css";
-import Alert from "./Alert";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { error } from "../../Utils/notification";
 
 function Slider() {
   const [hover, sethover] = useState(false);
   const [source, setsource] = useState("");
   const [destination, setdestination] = useState("");
   const [date, setdate] = useState("");
-  const [show, setShow] = useState(false);
-  const [show1, setShow1] = useState(false);
-  const [output, setOutput] = useState([]);
   const [showName, setShowNames] = useState(false);
-  const [outputdes, setOutputdes] = useState([]);
   const [showNamedes, setShowNamesdes] = useState(false);
-  const [show2, setShow2] = useState(false);
+  const [output, setOutput] = useState([]);
+  const [outputdes, setOutputdes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -84,11 +81,11 @@ function Slider() {
 
   function handleclicked() {
     if (date === "" || destination === "" || source === "") {
-      setShow(true);
+      error("Please Fill All The Details")
       return;
     }
     if (source === destination) {
-      setShow1(true);
+      error("Source And Destination Can't Be Same")
       return;
     }
     setsource("");
@@ -96,22 +93,21 @@ function Slider() {
   }
 
   async function getcityinfo(source, destination, date) {
-    console.log(source, destination, date);
-
     try {
       let res = await axios.post("http://localhost:8080/city/showcity", {
         source,
         destination,
         date,
       });
-      console.log(res);
       if (res.data.status === "success") {
         navigate({
           pathname: "/selectbus",
           search: `?from=${source}&to=${destination}&date=${date}`,
         });
       } else {
-        setShow2(true);
+        setsource("");
+        setdestination("");
+        error("City Not Found")
       }
     } catch (error) {
       console.log(error);
@@ -139,30 +135,6 @@ function Slider() {
   }
   return (
     <>
-      {show ? (
-        <Alert
-          variant={"info"}
-          data={"Please Fill All The Details"}
-          setShow={setShow}
-          show={show}
-        />
-      ) : null}
-      {show1 ? (
-        <Alert
-          variant={"info"}
-          data={"Source And Destination Can't Be Same"}
-          setShow={setShow1}
-          show={show1}
-        />
-      ) : null}
-      {show2 ? (
-        <Alert
-          variant={"info"}
-          data={"City Not Found"}
-          setShow={setShow2}
-          show={show2}
-        />
-      ) : null}
       <div className={styles.Carousel}>
         <div
           id="carouselExampleAutoplaying"
@@ -244,7 +216,10 @@ function Slider() {
             type="text"
             placeholder="Source"
             value={source}
-            onChange={(e) => setsource(e.target.value)}
+            onChange={(e) => {
+              setsource(e.target.value)
+              setShowNamesdes(false)
+            }}
             className={styles.inputsource}
           />
           {showName && output.length != 0 && (
@@ -267,7 +242,10 @@ function Slider() {
             type="text"
             placeholder="Destination"
             value={destination}
-            onChange={(e) => setdestination(e.target.value)}
+            onChange={(e) => {
+              setdestination(e.target.value)
+              setShowNames(false)
+            }}
             className={styles.inputsource1}
           />
           {showNamedes && outputdes.length != 0 && (

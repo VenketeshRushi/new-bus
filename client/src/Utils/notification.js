@@ -1,8 +1,8 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const success = (title) => {
- return toast.success(title, {
+  return toast.success(title, {
     position: toast.POSITION.TOP_CENTER,
     autoClose: 3000,
     hideProgressBar: false,
@@ -12,7 +12,6 @@ export const success = (title) => {
     progress: undefined,
     theme: "colored",
   });
-
 };
 
 export const error = (title) => {
@@ -27,5 +26,4 @@ export const error = (title) => {
     progress: undefined,
     theme: "colored",
   });
-  <ToastContainer />
 };

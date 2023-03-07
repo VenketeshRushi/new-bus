@@ -15,7 +15,7 @@ function Footer() {
             <div className="col-xl-3 col-lg-4 col-md-6">
               <div>
                 <h3>
-                  <span style={{ color: "#dc3545" }}>Red</span>Bus
+                  <span style={{ color: "#5266FA" }}>Blue</span>Bus
                 </h3>
                 <p className="mb-30 footer-desc">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad

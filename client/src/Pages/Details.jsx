@@ -1,11 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { removeall } from "../Redux/ticket/ticket.action";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import styles from "../Styles/details.module.css";
-import { error, success } from "../Utils/notification";
+import { validateEmail, validateMobile } from "../Utils/formValidator";
+import { error } from "../Utils/notification";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { initPayment } from "./payment/razorpay";
+
 function Details() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const params = useParams();
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const initialData = {
     name: "",
     age: "",
@@ -22,8 +30,15 @@ function Details() {
     });
   }
 
-  function handleclick(e) {
+  async function handleclick(e) {
     e.preventDefault();
+    let busid = params.id;
+    let date = searchParams.get("date");
+    let ticket = searchParams.get("ticket");
+    let amount = searchParams.get("amount");
+    let token = Cookies.get("jwttoken");
+    let userid = Cookies.get("userid");
+    console.log(date, ticket, busid, amount, token, userid);
     console.log(creds);
     if (
       creds.name === "" ||
@@ -32,11 +47,38 @@ function Details() {
       creds.email === "" ||
       creds.phone === ""
     ) {
-      error("Please fill all details");
-    } else {
-      success("thkans");
-      navigate("/")
+      return error("Please fill all details");
     }
+
+    const isEmail = validateEmail(creds.email);
+    if (!isEmail.status) {
+      return error(isEmail.message);
+    }
+
+    const isMobile = validateMobile(creds.phone);
+    if (!isMobile.status) {
+      return error(isMobile.message);
+    }
+
+    const { data } = await axios.post(
+      "http://localhost:8080/api/payment/ticket",
+      {
+        amount: amount,
+      }
+    );
+
+    initPayment(
+      creds,
+      data,
+      date,
+      ticket,
+      busid,
+      userid,
+      amount,
+      token,
+      dispatch,
+      navigate
+    );
   }
   return (
     <div className={styles.details}>

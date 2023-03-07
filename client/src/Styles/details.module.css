@@ -14,14 +14,14 @@
 }
 
 @media all and (min-width: 319px) and (max-width: 579px) {
-  details {
+  .details {
     width: 100%;
     margin: auto;
   }
 }
 
 @media all and (min-width: 580px) and (max-width: 900px) {
-  details {
+  .details {
     width: 80%;
     margin: auto;
   }

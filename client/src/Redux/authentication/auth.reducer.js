@@ -8,8 +8,8 @@ import {
 export const authInitalState = {
   loading: false,
   data: {
-    token: "",
-    userid: "",
+    token: Cookies.get("jwttoken") || "",
+    userid: Cookies.get("userid") || "",
     isAuthenticated: false,
   },
   error: false,

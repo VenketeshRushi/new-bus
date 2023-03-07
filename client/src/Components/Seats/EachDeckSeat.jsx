@@ -25,7 +25,7 @@ export default function EachDeckSeat({ id }) {
         style={
           select
             ? {
-                backgroundColor: "red",
+                backgroundColor: "green",
                 width: "80px",
                 height: "40px",
                 color: "white",

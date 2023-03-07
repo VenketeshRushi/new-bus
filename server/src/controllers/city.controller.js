@@ -37,10 +37,14 @@ app.post("/", async (req, res) => {
 });
 
 app.post("/showcity", async (req, res) => {
-  console.log(req.body)
+  let sourceStr = req.body.source;
+  let destinationStr = req.body.destination;
+  let source = sourceStr.charAt(0).toUpperCase() + sourceStr.substr(1);
+  let destination =
+    destinationStr.charAt(0).toUpperCase() + destinationStr.substr(1);
   try {
-    let fromcheck= await CityModel.findOne({name:req.body.source})
-    let destinationcheck=await CityModel.findOne({name:req.body.destination})
+    let fromcheck= await CityModel.findOne({name:source})
+    let destinationcheck=await CityModel.findOne({name:destination})
     console.log(fromcheck)
     console.log(destinationcheck)
     if(fromcheck){

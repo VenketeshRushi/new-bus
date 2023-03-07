@@ -16,10 +16,15 @@ app.post("/addnew", async (req, res) => {
 
 app.post("/getall", async (req, res) => {
   console.log(req.body);
+  let sourceStr = req.body.from;
+  let destinationStr = req.body.to;
+  let source = sourceStr.charAt(0).toUpperCase() + sourceStr.substr(1);
+  let destination =
+    destinationStr.charAt(0).toUpperCase() + destinationStr.substr(1);
   try {
     let allbusses = await BusModel.find({
-      from: req.body.from,
-      to: req.body.to,
+      from: source,
+      to: destination,
     });
     return res.send(allbusses);
   } catch (error) {
@@ -28,7 +33,7 @@ app.post("/getall", async (req, res) => {
 });
 
 app.post("/one", async (req, res) => {
-  console.log("hi")
+  console.log("hi");
   try {
     let bus = await BusModel.find({ _id: req.body.id });
     return res.send(bus);

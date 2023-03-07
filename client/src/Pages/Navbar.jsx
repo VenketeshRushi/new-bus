@@ -16,14 +16,14 @@ const Navbar = () => {
     success("Logout Successfully");
   };
   return (
-    <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary text-bg-danger">
+    <nav className="navbar navbar-dark navbar-expand-lg bg-body-tertiary text-bg-primary">
       <div className="container-fluid">
         <a
           className="navbar-brand"
           style={{ cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
-          RedBus
+          BlueBus
         </a>
         <button
           className="navbar-toggler"
@@ -56,25 +56,6 @@ const Navbar = () => {
               >
                 My Tickets
               </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                MANAGE BOOKING
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <a className="dropdown-item">Show My Tickets</a>
-                </li>
-                <hr className="dropdown-divider" />
-                <li>
-                  <a className="dropdown-item">Reschedule</a>
-                </li>
-              </ul>
             </li>
           </ul>
           <div>

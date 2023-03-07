@@ -18,7 +18,7 @@
   border-radius: 10px;
   margin-right: 5px;
   border: none;
-  outline-color: #dc3545;
+  outline-color: #1446A0;
 }
 .data > input::placeholder {
   padding-left: 5px;
@@ -27,7 +27,7 @@
   padding: 5px 15px;
   border-radius: 15px;
   border: none;
-  background-color: #dc3545;
+  background-color: #1446A0;
   color: white;
 }
 
@@ -317,14 +317,14 @@
 .names1 {
   position: absolute;
   top: 104%;
-  left: 26%;
+  left: 25%;
   width: max-content;
   border: 1px solid #4a4a4a;
   padding: 5px;
   border-radius: 5px;
   width: 16.5rem;
   height: 8.5rem;
-  overflow: hidden;
+  overflow-y: scroll;
   background-color: white;
   color: black;
 }
@@ -347,9 +347,7 @@
   }
 }
 
-
-
-@media all and (min-width: 319px) and (max-width:579px)  {
+@media all and (min-width: 319px) and (max-width: 579px) {
   .data {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
@@ -401,26 +399,25 @@
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
   }
-  .reviewmain > div{
+  .reviewmain > div {
     width: 80%;
   }
   .counts {
     grid-template-columns: repeat(1, 1fr);
   }
-  .names{
+  .names {
     top: 19.19%;
     left: 1;
     z-index: 1;
-
   }
-  .names1{
+  .names1 {
     top: 44.5%;
     left: 0;
     z-index: 1;
   }
 }
 
-@media all and (min-width: 580px) and (max-width:900px) {
+@media all and (min-width: 580px) and (max-width: 900px) {
   .data {
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
@@ -446,19 +443,19 @@
   .Carousel {
     margin-bottom: 130px;
   }
-  .names{
+  .names {
     top: 19%;
     left: 1%;
     z-index: 1;
   }
-  .names1{
+  .names1 {
     top: 45%;
     left: 1%;
     z-index: 1;
   }
 }
 
-@media all and (min-width: 901px) and (max-width:1019px) {
+@media all and (min-width: 901px) and (max-width: 1019px) {
   .data {
     grid-template-columns: repeat(4, 1fr);
     gap: 0px;
@@ -485,7 +482,7 @@
   }
 }
 
-@media (min-width: 1020px) and (max-width:2559px) {
+@media (min-width: 1020px) and (max-width: 2559px) {
   .data {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.4rem;
@@ -510,10 +507,18 @@
   .reviewmain {
     grid-template-columns: repeat(3, 1fr);
   }
-  .reviewmain > div{
+  .reviewmain > div {
     width: 90%;
   }
   .counts {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .names {
+    width: max-content;
+    padding: 15px;
+  }
+  .names1 {
+    width: max-content;
+    padding: 15px;
   }
 }
