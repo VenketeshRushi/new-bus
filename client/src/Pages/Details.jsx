@@ -39,7 +39,7 @@ function Details() {
     let token = Cookies.get("jwttoken");
     let userid = Cookies.get("userid");
     console.log(date, ticket, busid, amount, token, userid);
-    console.log(creds);
+
     if (
       creds.name === "" ||
       creds.age === "" ||
@@ -67,7 +67,10 @@ function Details() {
       }
     );
 
+    let busdata = JSON.parse(sessionStorage.getItem("busData"));
+
     initPayment(
+      busdata,
       creds,
       data,
       date,

@@ -3,6 +3,7 @@ import { removeall } from "../../Redux/ticket/ticket.action";
 import { success } from "../../Utils/notification";
 
 export const sendOrderRequest = async (
+  busdata,
   creds,
   orderId,
   response,
@@ -21,7 +22,20 @@ export const sendOrderRequest = async (
     amount: amount,
   };
   let userDetails = creds;
+
+  console.log("Sending order request", busdata);
+  let busDetails = {
+    name: busdata[0].companyname,
+    from: busdata[0].from,
+    to: busdata[0].to,
+    contactemail: busdata[0].email,
+    contactphone: busdata[0].phone,
+    arrival: busdata[0].arrival,
+    departure: busdata[0].departure,
+  };
+
   const payload = {
+    busDetails,
     ticketSummary,
     paymentDetails: {
       orderId,
@@ -29,7 +43,7 @@ export const sendOrderRequest = async (
       razorpayPaymentId: response.razorpay_payment_id,
     },
     userDetails,
-    bus:busid,
+    bus: busid,
     user: userid,
   };
 

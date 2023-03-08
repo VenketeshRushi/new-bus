@@ -27,7 +27,7 @@
   border-radius: 10px;
 }
 .busdata > div > button {
-  background-color: #1446A0;
+  background-color: #1446a0;
   color: white;
   border: none;
   border-radius: 10px;
@@ -74,7 +74,7 @@
 }
 
 .btn {
-  background-color: #1446A0;
+  background-color: #1446a0;
   color: white;
   border: none;
   border-radius: 10px;
@@ -84,8 +84,11 @@
 }
 
 @media all and (min-width: 319px) and (max-width: 579px) {
+  .main {
+    flex-direction: column;
+  }
   .filter {
-    display: none;
+    width: 100%;
   }
   .busdata {
     flex-direction: column;
@@ -98,8 +101,12 @@
 }
 
 @media all and (min-width: 580px) and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
   .filter {
-    display: none;
+    width: 60%;
+    margin: auto;
   }
   .busdata {
     flex-direction: column;

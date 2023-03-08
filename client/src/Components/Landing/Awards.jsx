@@ -4,9 +4,7 @@ const Awards = () => {
     <div>
       <div className={styles.awardsContainer}>
         <div className={styles.awardHeading}>AWARDS AND RECOGNITION</div>
-        <div
-        className={styles.awardmain}
-        >
+        <div className={styles.awardmain}>
           <div
             style={{
               display: "flex",
@@ -16,27 +14,16 @@ const Awards = () => {
               alignItems: "center",
             }}
           >
-            <img
-              src="https://s2.rdbuz.com/web/images/home/awards/Business_Standard1.png"
-              alt=""
-            />
+            <img src={require("../../Images/Business_Standard1.png")} alt="" />
             <div className={styles.awardsPara}>Most Innovative Company</div>
           </div>
           <div>
-            <img
-              src="https://s1.rdbuz.com/web/images/home/awards/Brand_Trust_Report.png"
-              alt=""
-            />
+            <img src={require("../../Images/Brand_Trust_Report.png")} alt="" />
             <div className={styles.awardsPara}>Most Trusted Brand</div>
           </div>
           <div>
-            <img
-              src="https://s3.rdbuz.com/web/images/home/awards/Eye_for_Travel1.png"
-              alt=""
-            />
-            <div className={styles.awardsPara}>
-              Mobile Innovation Award
-            </div>
+            <img src={require("../../Images/Eye_for_Travel1.png")} alt="" />
+            <div className={styles.awardsPara}>Mobile Innovation Award</div>
           </div>
         </div>
       </div>

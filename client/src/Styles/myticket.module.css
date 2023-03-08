@@ -1,0 +1,118 @@
+.busdata {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.btn {
+  background-color: #1446a0;
+  border-radius: 10px;
+  color: white;
+  padding: 5px;
+  border: none;
+}
+
+.busdata > div {
+  width: 30%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 10px;
+}
+.busdata > div > button {
+  width: 100%;
+  background-color: #1446a0;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+}
+
+.busdata > div > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  width: 80%;
+}
+
+.busdata h6 {
+  text-align: left;
+  font-weight: 300;
+  margin-left: 35px;
+}
+
+.seats {
+  width: 60%;
+}
+
+.seatlb {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.selectedseats {
+  float: right;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.fair {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3e3e52;
+  margin-top: 0.9375rem;
+}
+
+.summarycontainer {
+  font-size: 0.875rem;
+  font-weight: 200;
+  color: #8f8f8f;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  width: 100%;
+}
+.fareslb {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3e3e52;
+}
+
+.summaryvalue {
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-align: right;
+  color: #3e3e52;
+}
+.summarycurrency {
+  margin-right: 5px;
+}
+
+@media all and (min-width: 319px) and (max-width: 579px) {
+  .busdata {
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+  }
+  .busdata > div {
+    width: 90%;
+  }
+}
+
+@media all and (min-width: 580px) and (max-width: 900px) {
+  .busdata {
+    width: 100%;
+    margin: auto;
+  }
+}

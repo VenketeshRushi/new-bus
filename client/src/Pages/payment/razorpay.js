@@ -4,6 +4,7 @@ import { error, success } from "../../Utils/notification";
 import { sendOrderRequest } from "./sendOrderRequest";
 
 export const initPayment = (
+  busdata,
   creds,
   orderDetails,
   date,
@@ -42,7 +43,9 @@ export const initPayment = (
         );
 
         success(data.message);
+
         sendOrderRequest(
+          busdata,
           creds,
           orderDetails.id,
           response,   
@@ -55,6 +58,7 @@ export const initPayment = (
           dispatch,
           navigate
         );
+        
       } catch (error) {
         console.log(error);
         return { status: false };

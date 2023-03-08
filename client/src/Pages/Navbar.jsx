@@ -52,7 +52,7 @@ const Navbar = () => {
               <a
                 className="nav-link active"
                 style={{ cursor: "pointer" }}
-                onClick={() => navigate("/myticket")}
+                onClick={() => navigate(`/myticket`)}
               >
                 My Tickets
               </a>
