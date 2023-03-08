@@ -9,6 +9,11 @@ app.post("/", async (req, res) => {
   console.log(req.body);
   try {
     const order = await Order.create({ ...req.body });
+    // let tickets = ticketSummary.ticket;
+    // tickets = tickets.split(",");
+    // let filter = { _id: req.body.bus };
+    // let update = { seats : { $in : tickets }  }
+    // const busUpdate = await BusModel.findOneAndUpdate(filter, update);
     return res.status(201).json(order);
   } catch (error) {
     console.log(error.message);

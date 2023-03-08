@@ -7,11 +7,11 @@ const BusSchema = new Schema({
   price: Number,
   email: String,
   phone: Number,
-  aminites:Array,
+  aminites: Array,
   rating: Number,
   arrival: String,
   departure: String,
-  seats:Map,
+  seats: Array,
 });
 
 const BusModel = model("busses", BusSchema);

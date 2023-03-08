@@ -13,7 +13,20 @@ function Slider() {
   const [showNamedes, setShowNamesdes] = useState(false);
   const [output, setOutput] = useState([]);
   const [outputdes, setOutputdes] = useState([]);
+  const [dateinfo, setdateinfo] = useState({});
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let mindate = new Date().toISOString().split("T")[0];
+    let maxdate = new Date().toISOString().split("T")[0];
+    console.log(mindate, maxdate);
+    setdate(mindate);
+    setdateinfo({
+      ...dateinfo,
+      mindate: mindate,
+      maxdate: maxdate,
+    });
+  }, []);
 
   useEffect(() => {
     if (source === "") {
@@ -81,11 +94,11 @@ function Slider() {
 
   function handleclicked() {
     if (date === "" || destination === "" || source === "") {
-      error("Please Fill All The Details")
+      error("Please Fill All The Details");
       return;
     }
     if (source === destination) {
-      error("Source And Destination Can't Be Same")
+      error("Source And Destination Can't Be Same");
       return;
     }
     setsource("");
@@ -107,7 +120,7 @@ function Slider() {
       } else {
         setsource("");
         setdestination("");
-        error("City Not Found")
+        error("City Not Found");
       }
     } catch (error) {
       console.log(error);
@@ -142,6 +155,17 @@ function Slider() {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
+            <div className="carousel-item active" data-bs-interval="3000">
+              {" "}
+              <img
+                src={require("../../Images/Hero01.png")}
+                className="object-fit-cover"
+                style={{ height: "75vh", width: "100%" }}
+                alt="..."
+                onMouseOver={handelhover}
+                onMouseLeave={handelhoverout}
+              />
+            </div>
             <div className="carousel-item active" data-bs-interval="3000">
               {" "}
               <img
@@ -217,14 +241,14 @@ function Slider() {
             placeholder="Source"
             value={source}
             onChange={(e) => {
-              setsource(e.target.value)
-              setShowNamesdes(false)
+              setsource(e.target.value);
+              setShowNamesdes(false);
             }}
             className={styles.inputsource}
           />
           {showName && output.length != 0 && (
             <div className={styles.names}>
-              {output?.map((item,i) => (
+              {output?.map((item, i) => (
                 <div
                   style={{ cursor: "pointer" }}
                   onClick={() => handlecityclicked(item.name)}
@@ -243,14 +267,14 @@ function Slider() {
             placeholder="Destination"
             value={destination}
             onChange={(e) => {
-              setdestination(e.target.value)
-              setShowNames(false)
+              setdestination(e.target.value);
+              setShowNames(false);
             }}
             className={styles.inputsource1}
           />
           {showNamedes && outputdes.length != 0 && (
             <div className={styles.names1}>
-              {outputdes?.map((item,i) => (
+              {outputdes?.map((item, i) => (
                 <div
                   style={{ cursor: "pointer" }}
                   onClick={() => handlecityclicked1(item.name)}
@@ -267,6 +291,7 @@ function Slider() {
           <input
             type="date"
             value={date}
+            min={dateinfo.mindate}
             onChange={(e) => setdate(e.target.value)}
             onClick={() => handledateclicked()}
           />
