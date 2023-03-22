@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeData, saveData1 } from "../../Redux/ticket/ticket.action";
 
-export default function EachDeckSeat({ id }) {
+export default function EachDeckSeat({ id, color, disable }) {
   const [select, setSelect] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,13 +32,14 @@ export default function EachDeckSeat({ id }) {
                 borderRadius: "5px",
               }
             : {
-                backgroundColor: "gray",
+                backgroundColor: color,
                 width: "80px",
                 height: "40px",
                 color: "white",
                 borderRadius: "5px",
               }
         }
+        disabled={disable}
         onClick={() => handleClick(id)}
       >
         {id}
