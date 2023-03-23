@@ -1,12 +1,27 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "../Styles/login.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { loginAPI } from "../Redux/authentication/auth.action";
 import { error } from "../Utils/notification";
 
 function Signin() {
+  const isAuthenticated = useSelector(
+    (state) => state.auth.data.isAuthenticated
+  );
+  const { state } = useLocation();
+  useEffect(() => {
+    if (isAuthenticated) {
+      if (state.from) {
+        console.log(state.from);
+        navigate(state.from, { replace: true });
+      } else {
+        navigate("/");
+      }
+    }
+  }, [isAuthenticated]);
+
   const initialData = {
     email: "",
     password: "",
