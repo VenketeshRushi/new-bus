@@ -20,6 +20,9 @@ export const loginAPI = (data, navigate) => async (dispatch) => {
       Cookies.set("userid", response.data.message.user._id, {
         expires: new Date(new Date().getTime() + 60 * 60 * 1000),
       });
+      Cookies.set("usergender", response.data.message.user.gender, {
+        expires: new Date(new Date().getTime() + 60 * 60 * 1000),
+      });
       dispatch({
         type: AUTH_LOG_IN_SUCCESS,
         payload: response.data,

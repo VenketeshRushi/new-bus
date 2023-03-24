@@ -49,7 +49,7 @@ function Signin() {
   return (
     <>
       <div className={styles.login}>
-        <h1 className="h3 mb-3 fw-normal">Sign In</h1>
+        <h1 className="h3 mb-3 fw-bold">Sign In</h1>
         <div>
           <p style={{ textAlign: "left", marginBottom: "0px" }}>Email</p>
           <input
@@ -79,17 +79,29 @@ function Signin() {
             </span>
           </div>
         </div>
-        <div style={{ textAlign: "Left" }}>
-          <p>
-            Dont have account ? <Link to={"/signup"}>SignUp</Link>
-          </p>
-          <p>
-            <Link>Forgot Password</Link>
-          </p>
-        </div>
-        <button className="w-100 btn btn-lg btn-primary" onClick={handleSubmit}>
+        <p style={{ textAlign: "right", marginTop: "-10px" }}>
+          <Link>Forgot Password</Link>
+        </p>
+        <button
+          className="w-100  btn btn-lg btn-primary"
+          onClick={handleSubmit}
+        >
           Sign In
         </button>
+        <div style={{ textAlign: "center", marginTop: "15px" }}>
+          <p>
+            Dont Have Account?{" "}
+            <Link
+              to={"/signup"}
+              style={{
+                paddingLeft: 10,
+                textDecoration: "none",
+              }}
+            >
+              SignUp
+            </Link>
+          </p>
+        </div>
       </div>
     </>
   );

@@ -10,11 +10,11 @@ function Signup() {
   const initialData = {
     email: "",
     password: "",
+    gender: "",
   };
   const [signUpcreds, setsignUpcreds] = useState(initialData);
   const [showpassword, setshowpassword] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const hanldeChange = (e) => {
     const { name, value } = e.target;
@@ -26,8 +26,12 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (signUpcreds.email === "" || signUpcreds.password === "") {
-      error("Plaese Fill Details");
+    if (
+      signUpcreds.email === "" ||
+      signUpcreds.password === "" ||
+      signUpcreds.gender === ""
+    ) {
+      error("Plaese Fill All The Details");
     } else {
       try {
         let response = await axios.post(
@@ -49,7 +53,7 @@ function Signup() {
   return (
     <>
       <div className={styles.login}>
-        <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
+        <h1 className="h3 mb-3 fw-bold">Sign Up</h1>
         <div>
           <p style={{ textAlign: "left", marginBottom: "0px" }}>Email</p>
           <input
@@ -79,14 +83,36 @@ function Signup() {
             </span>
           </div>
         </div>
-        <div>
-          <p>
-            Already a user ? <Link to={"/signin"}>SignIn</Link>
-          </p>
-        </div>
-        <button className="w-100 btn btn-lg btn-primary" onClick={handleSubmit}>
+        <select
+          name={"gender"}
+          onChange={hanldeChange}
+          class="form-select"
+          aria-label="Default select example"
+        >
+          <option selected>Select Your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <button
+          className="w-100 mt-3 btn btn-lg btn-primary"
+          onClick={handleSubmit}
+        >
           Sign up
         </button>
+        <div style={{ textAlign: "center", marginTop: "15px" }}>
+          <p>
+            Already A User?{" "}
+            <Link
+              to={"/signin"}
+              style={{
+                paddingLeft: 8,
+                textDecoration: "none",
+              }}
+            >
+              SignIn
+            </Link>
+          </p>
+        </div>
       </div>
     </>
   );

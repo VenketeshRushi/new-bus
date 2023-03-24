@@ -10,12 +10,13 @@ import { BiArrowFromLeft } from "react-icons/bi";
 
 function Myticket() {
   const [data, setdata] = useState([]);
+  const [today, settoday] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     let userid = Cookies.get("userid");
     getdata(userid);
-    success("IMP NOTE ;- Yo u Can Cancel Ticket One Day Before Journey ");
+    success("IMP NOTE ;- You Can Cancel Ticket One Day Before Journey ");
   }, []);
 
   async function getdata(id) {
@@ -28,10 +29,31 @@ function Myticket() {
     } catch (error1) {
       Cookies.remove("jwttoken");
       Cookies.remove("userid");
+      Cookies.remove("usergender");
       dispatch(logoutAPI());
-      navigate("/");
+
       error("Session Expired Please Sign In Again");
       console.log(error1);
+    }
+  }
+
+  async function getdataToday() {
+    let id = Cookies.get("userid");
+    try {
+      let res = await axios.post("http://localhost:8080/order/myticket/upcoming", {
+        id,
+      });
+      console.log(res);
+      settoday(res.data);
+    } catch (error) {
+      console.log(error);
+      error("Session Expired Please Sign In Again");
+      dispatch(logoutAPI());
+      navigate("/");
+
+      Cookies.remove("jwttoken");
+      Cookies.remove("userid");
+      Cookies.remove("usergender");
     }
   }
 
@@ -51,9 +73,9 @@ function Myticket() {
   return (
     <>
       <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <div className="nav nav-tabs" id="nav-tab" role="tablist">
           <button
-            class="nav-link active"
+            className="nav-link active"
             id="nav-home-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-home"
@@ -61,11 +83,12 @@ function Myticket() {
             role="tab"
             aria-controls="nav-home"
             aria-selected="true"
+            onClick={getdataToday}
           >
             Today's Tickets
           </button>
           <button
-            class="nav-link"
+            className="nav-link"
             id="nav-profile-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-profile"
@@ -77,7 +100,7 @@ function Myticket() {
             Upcoming Tickets
           </button>
           <button
-            class="nav-link"
+            className="nav-link"
             id="nav-contact-tab"
             data-bs-toggle="tab"
             data-bs-target="#nav-contact"
@@ -90,9 +113,9 @@ function Myticket() {
           </button>
         </div>
       </nav>
-      <div class="tab-content" id="nav-tabContent">
+      <div className="tab-content" id="nav-tabContent">
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab"
@@ -161,7 +184,7 @@ function Myticket() {
           </div>
         </div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-profile"
           role="tabpanel"
           aria-labelledby="nav-profile-tab"
@@ -169,7 +192,7 @@ function Myticket() {
           ...
         </div>
         <div
-          class="tab-pane fade"
+          className="tab-pane fade"
           id="nav-contact"
           role="tabpanel"
           aria-labelledby="nav-contact-tab"
