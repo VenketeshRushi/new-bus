@@ -14,6 +14,9 @@ function Slider() {
   const [output, setOutput] = useState([]);
   const [outputdes, setOutputdes] = useState([]);
   const [dateinfo, setdateinfo] = useState({});
+  const [cityClicked, setCityclicked] = useState(false);
+  const [CityDesclicked, setCityDesclicked] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,6 +36,10 @@ function Slider() {
       setShowNames(false);
       return;
     }
+    if (cityClicked === true) {
+      setCityclicked(false);
+      return;
+    }
     let timerID = setTimeout(() => {
       handleGetRequest();
     }, 1000);
@@ -45,6 +52,10 @@ function Slider() {
   useEffect(() => {
     if (destination === "") {
       setShowNamesdes(false);
+      return;
+    }
+    if (CityDesclicked === true) {
+      setCityDesclicked(false);
       return;
     }
     let timerID = setTimeout(() => {
@@ -128,18 +139,14 @@ function Slider() {
   }
 
   function handlecityclicked(name) {
+    setCityclicked(true);
     setsource(name);
     setShowNames(false);
-    setTimeout(() => {
-      setShowNames(false);
-    }, [1100]);
   }
   function handlecityclicked1(name) {
+    setCityDesclicked(true);
     setdestination(name);
     setShowNamesdes(false);
-    setTimeout(() => {
-      setShowNamesdes(false);
-    }, [1100]);
   }
 
   function handledateclicked() {

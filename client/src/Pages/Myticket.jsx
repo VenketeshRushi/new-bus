@@ -15,6 +15,7 @@ function Myticket() {
   useEffect(() => {
     let userid = Cookies.get("userid");
     getdata(userid);
+    success("IMP NOTE ;- YOu Can Cancel Ticket One Day Before Journey ");
   }, []);
 
   async function getdata(id) {
@@ -72,8 +73,12 @@ function Myticket() {
                 <h6>Arrival Time : {ele.busDetails.arrival}</h6>
                 <h6>Departure Time : {ele.busDetails.departure}</h6>
                 <hr />
-                <h6>Email : {ele?.busDetails.busDetails}</h6>
-                <h6>Phone : {ele?.busDetails.busDetails}</h6>
+                <h6>Email : {ele?.busDetails.contactemail}</h6>
+                <h6>Phone : {ele?.busDetails.contactphone}</h6>
+                <hr />
+                <h6>
+                  Date Of Journey : {ele?.ticketSummary.date.split("T")[0]}
+                </h6>
                 <hr />
                 <div className={styles.seatno}>
                   <span className={styles.seatlb}>Seat No.</span>
@@ -90,12 +95,18 @@ function Myticket() {
                     <span>{ele.ticketSummary.amount}</span>
                   </span>
                 </div>
-                <button
-                  className={styles.btn}
-                  onClick={() => handledelete(ele)}
-                >
-                  Cancel
-                </button>
+                <div></div>
+                {JSON.stringify(new Date()).split("T")[0].split('"')[1] ===
+                ele?.ticketSummary.date.split("T")[0] ? (
+                  <button className={styles.button49}>HAPPY JOURNEY</button>
+                ) : (
+                  <button
+                    className={styles.btn}
+                    onClick={() => handledelete(ele)}
+                  >
+                    Cancel Ticket
+                  </button>
+                )}
               </div>
             );
           })}
