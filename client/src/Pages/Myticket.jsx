@@ -15,7 +15,7 @@ function Myticket() {
   useEffect(() => {
     let userid = Cookies.get("userid");
     getdata(userid);
-    success("IMP NOTE ;- YOu Can Cancel Ticket One Day Before Journey ");
+    success("IMP NOTE ;- Yo u Can Cancel Ticket One Day Before Journey ");
   }, []);
 
   async function getdata(id) {
@@ -50,66 +50,131 @@ function Myticket() {
   }
   return (
     <>
-      <div>
-        <div className={styles.busdata}>
-          {" "}
-          {data.map((ele) => {
-            return (
-              <div>
-                <h5>
-                  {ele?.busDetails.name.charAt(0).toUpperCase() +
-                    ele?.busDetails.name.slice(1)}{" "}
-                  Travels
-                </h5>
-                <div>
-                  {" "}
-                  <p>{ele?.busDetails.from}</p>
-                  <p>
-                    <BiArrowFromLeft />
-                  </p>
-                  <p>{ele?.busDetails.to}</p>
-                </div>
-                <hr />
-                <h6>Arrival Time : {ele.busDetails.arrival}</h6>
-                <h6>Departure Time : {ele.busDetails.departure}</h6>
-                <hr />
-                <h6>Email : {ele?.busDetails.contactemail}</h6>
-                <h6>Phone : {ele?.busDetails.contactphone}</h6>
-                <hr />
-                <h6>
-                  Date Of Journey : {ele?.ticketSummary.date.split("T")[0]}
-                </h6>
-                <hr />
-                <div className={styles.seatno}>
-                  <span className={styles.seatlb}>Seat No.</span>
-                  <div className={styles.selectedseats}>
-                    <span>{ele.ticketSummary.ticket}</span>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button
+            class="nav-link active"
+            id="nav-home-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-home"
+            type="button"
+            role="tab"
+            aria-controls="nav-home"
+            aria-selected="true"
+          >
+            Today's Tickets
+          </button>
+          <button
+            class="nav-link"
+            id="nav-profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-profile"
+            type="button"
+            role="tab"
+            aria-controls="nav-profile"
+            aria-selected="false"
+          >
+            Upcoming Tickets
+          </button>
+          <button
+            class="nav-link"
+            id="nav-contact-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#nav-contact"
+            type="button"
+            role="tab"
+            aria-controls="nav-contact"
+            aria-selected="false"
+          >
+            Past Tickets
+          </button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="nav-home"
+          role="tabpanel"
+          aria-labelledby="nav-home-tab"
+        >
+          <div>
+            <div className={styles.busdata}>
+              {" "}
+              {data.map((ele) => {
+                return (
+                  <div>
+                    <h5>
+                      {ele?.busDetails.name.charAt(0).toUpperCase() +
+                        ele?.busDetails.name.slice(1)}{" "}
+                      Travels
+                    </h5>
+                    <div>
+                      {" "}
+                      <p>{ele?.busDetails.from}</p>
+                      <p>
+                        <BiArrowFromLeft />
+                      </p>
+                      <p>{ele?.busDetails.to}</p>
+                    </div>
+                    <hr />
+                    <h6>Arrival Time : {ele.busDetails.arrival}</h6>
+                    <h6>Departure Time : {ele.busDetails.departure}</h6>
+                    <hr />
+                    <h6>Email : {ele?.busDetails.contactemail}</h6>
+                    <h6>Phone : {ele?.busDetails.contactphone}</h6>
+                    <hr />
+                    <h6>
+                      Date Of Journey : {ele?.ticketSummary.date.split("T")[0]}
+                    </h6>
+                    <hr />
+                    <div className={styles.seatno}>
+                      <span className={styles.seatlb}>Seat No.</span>
+                      <div className={styles.selectedseats}>
+                        <span>{ele.ticketSummary.ticket}</span>
+                      </div>
+                    </div>
+                    <hr />
+                    <div className={styles.fair}>Fare Details</div>
+                    <div className={styles.summarycontainer}>
+                      <span className={styles.fareslb}>Amount</span>
+                      <span className={styles.summaryvalue}>
+                        <span className={styles.summarycurrency}>INR</span>
+                        <span>{ele.ticketSummary.amount}</span>
+                      </span>
+                    </div>
+                    <div></div>
+                    {JSON.stringify(new Date()).split("T")[0].split('"')[1] ===
+                    ele?.ticketSummary.date.split("T")[0] ? (
+                      <button className={styles.button49}>HAPPY JOURNEY</button>
+                    ) : (
+                      <button
+                        className={styles.btn}
+                        onClick={() => handledelete(ele)}
+                      >
+                        Cancel Ticket
+                      </button>
+                    )}
                   </div>
-                </div>
-                <hr />
-                <div className={styles.fair}>Fare Details</div>
-                <div className={styles.summarycontainer}>
-                  <span className={styles.fareslb}>Amount</span>
-                  <span className={styles.summaryvalue}>
-                    <span className={styles.summarycurrency}>INR</span>
-                    <span>{ele.ticketSummary.amount}</span>
-                  </span>
-                </div>
-                <div></div>
-                {JSON.stringify(new Date()).split("T")[0].split('"')[1] ===
-                ele?.ticketSummary.date.split("T")[0] ? (
-                  <button className={styles.button49}>HAPPY JOURNEY</button>
-                ) : (
-                  <button
-                    className={styles.btn}
-                    onClick={() => handledelete(ele)}
-                  >
-                    Cancel Ticket
-                  </button>
-                )}
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="nav-profile"
+          role="tabpanel"
+          aria-labelledby="nav-profile-tab"
+        >
+          ...
+        </div>
+        <div
+          class="tab-pane fade"
+          id="nav-contact"
+          role="tabpanel"
+          aria-labelledby="nav-contact-tab"
+        >
+          ...
         </div>
       </div>
     </>
