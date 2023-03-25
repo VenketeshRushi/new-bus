@@ -83,6 +83,15 @@
   margin-top: 10px;
 }
 
+.wrong{
+  width: 100%;
+  border: 5px solid;
+}
+.wrong > img{
+  width: 100%;
+  object-fit: contain;
+}
+
 @media all and (min-width: 319px) and (max-width: 579px) {
   .main {
     flex-direction: column;

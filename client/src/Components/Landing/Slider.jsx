@@ -3,6 +3,7 @@ import styles from "../../Styles/landing.module.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { error } from "../../Utils/notification";
+import safty from "../../Images/safetyplus.svg"
 
 function Slider() {
   const [hover, sethover] = useState(false);
@@ -162,17 +163,7 @@ function Slider() {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active" data-bs-interval="3000">
-              {" "}
-              <img
-                src={require("../../Images/Hero01.png")}
-                className="object-fit-cover"
-                style={{ height: "75vh", width: "100%" }}
-                alt="..."
-                onMouseOver={handelhover}
-                onMouseLeave={handelhoverout}
-              />
-            </div>
+
             <div className="carousel-item active" data-bs-interval="3000">
               {" "}
               <img
@@ -308,7 +299,7 @@ function Slider() {
           <div>
             {" "}
             <img
-              src="https://s3.rdbuz.com/Images/webplatform/measures/safetyplus.svg"
+              src={safty}
               alt="shield"
             />
           </div>

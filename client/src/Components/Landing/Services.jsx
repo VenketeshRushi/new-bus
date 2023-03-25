@@ -1,8 +1,9 @@
 import styles from "../../Styles/landing.module.css";
+import safty from "../../Images/safetyplus.svg"
 
 const data = [
   {
-    img: "https://s3.rdbuz.com/Images/safety/srp/safety.svg",
+    img: safty,
     title: "SAFETY+",
     desc: "With Safety+ we have brought in a set of measures like Sanitized buses, mandatory masks etc. to ensure you travel safely.",
   },

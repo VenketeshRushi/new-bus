@@ -3,7 +3,7 @@ const BusModel = require("../models/bus.model");
 const order = require("../models/order.model");
 
 const Order = require("../models/order.model");
-
+const moment = require("moment");
 const app = express.Router();
 
 app.post("/", async (req, res) => {
@@ -71,16 +71,29 @@ app.post("/myticket/today", async (req, res) => {
 });
 
 app.post("/myticket/upcoming", async (req, res) => {
-  console.log("hiiiii", req.body);
-  const date = JSON.stringify(new Date()).split("T")[0].split('"')[1];
-  console.log("byeeeeeeeeeeeee", date);
+  const currentDate = new Date();
   try {
-    const order = await Order.find();
+    const order = await Order.find({
+      "ticketSummary.date": { $gt: new Date(currentDate) },
+    });
+    console.log("checking upcoming");
     console.log(order);
-    let d = new Date();
-    let orderDate = order[0].ticketSummary.date
+    return res.status(201).json(order);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal server error!" });
+  }
+});
 
-    console.log(d<orderDate)
+app.post("/myticket/past", async (req, res) => {
+  const currentDate = JSON.stringify(new Date()).split("T")[0].split('"')[1];
+  try {
+    const order = await Order.find({
+      "ticketSummary.date": { $lt: new Date(currentDate) },
+    });
+    console.log("checking past");
+    console.log(order);
+    return res.status(201).json(order);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "Internal server error!" });

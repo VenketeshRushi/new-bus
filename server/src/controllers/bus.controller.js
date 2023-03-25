@@ -16,12 +16,12 @@ app.post("/addnew", async (req, res) => {
 
 app.post("/getall", async (req, res) => {
   console.log(req.body);
-  let sourceStr = req.body.from;
-  let destinationStr = req.body.to;
-  let source = sourceStr.charAt(0).toUpperCase() + sourceStr.substr(1);
-  let destination =
-    destinationStr.charAt(0).toUpperCase() + destinationStr.substr(1);
   try {
+    let sourceStr = req.body.from;
+    let destinationStr = req.body.to;
+    let source = sourceStr.charAt(0).toUpperCase() + sourceStr.substr(1);
+    let destination =
+      destinationStr.charAt(0).toUpperCase() + destinationStr.substr(1);
     let allbusses = await BusModel.find({
       from: source,
       to: destination,
