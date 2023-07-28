@@ -7,7 +7,7 @@ const moment = require("moment");
 const app = express.Router();
 
 app.post("/", async (req, res) => {
-  console.log("body", req.body);
+  // console.log("body", req.body);
   try {
     const order = await Order.create({ ...req.body });
     let ticketdata =
@@ -16,13 +16,13 @@ app.post("/", async (req, res) => {
       req.body.ticketSummary.ticket +
       "@" +
       req.body.userDetails.gender;
-    console.log(ticketdata);
+    // console.log(ticketdata);
     let filter = { _id: req.body.bus };
     let update = { $push: { seats: ticketdata } };
     const busUpdate = await BusModel.findOneAndUpdate(filter, update);
     return res.status(201).json(order);
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     return res.status(500).json({ message: "Internal server error!" });
   }
 });
@@ -38,7 +38,7 @@ app.post("/myticket", async (req, res) => {
 
 app.delete("/oneorder/:id", async (req, res) => {
   let id = req.params.id.split(":")[1];
-  console.log(id);
+  // console.log(id);
   try {
     const order = await Order.findOneAndDelete({ user: id });
     return res.status(201).json(order);
@@ -48,12 +48,12 @@ app.delete("/oneorder/:id", async (req, res) => {
 });
 
 app.post("/myticket/today", async (req, res) => {
-  console.log("hi", req.body);
+  // console.log("hi", req.body);
   const date = JSON.stringify(new Date()).split("T")[0].split('"')[1];
-  console.log("bye", date);
+  // console.log("bye", date);
   try {
     const order = await Order.find();
-    console.log(order);
+    // console.log(order);
     let data = order.filter((ele) => {
       let orderDate = JSON.stringify(ele.ticketSummary.date)
         .split("T")[0]
@@ -62,10 +62,10 @@ app.post("/myticket/today", async (req, res) => {
         return ele;
       }
     });
-    console.log(data);
+    // console.log(data);
     return res.status(201).json(data);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: "Internal server error!" });
   }
 });
@@ -76,11 +76,11 @@ app.post("/myticket/upcoming", async (req, res) => {
     const order = await Order.find({
       "ticketSummary.date": { $gt: new Date(currentDate) },
     });
-    console.log("checking upcoming");
-    console.log(order);
+    // console.log("checking upcoming");
+    // console.log(order);
     return res.status(201).json(order);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: "Internal server error!" });
   }
 });
@@ -91,11 +91,11 @@ app.post("/myticket/past", async (req, res) => {
     const order = await Order.find({
       "ticketSummary.date": { $lt: new Date(currentDate) },
     });
-    console.log("checking past");
-    console.log(order);
+    // console.log("checking past");
+    // console.log(order);
     return res.status(201).json(order);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: "Internal server error!" });
   }
 });

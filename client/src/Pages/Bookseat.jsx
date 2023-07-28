@@ -29,12 +29,12 @@ function Bookseat() {
     }
   }, []);
   async function getdata() {
-    console.log(param.id);
+    // console.log(param.id);
     try {
       let res = await axios.post("http://localhost:8080/bus/one", {
         id: param.id,
       });
-      console.log("OK", res.data);
+      // console.log("OK", res.data);
       setdata(res.data);
       let info = res.data[0].seats;
       let date = searchParams.get("date");
@@ -46,8 +46,8 @@ function Bookseat() {
           return z;
         }
       });
-      console.log("ans", ans);
-      console.log("bookedSeats", bookedSeates);
+      // console.log("ans", ans);
+      // console.log("bookedSeats", bookedSeates);
       setwentwrong(false);
     } catch (error) {
       console.log(error);
@@ -68,7 +68,7 @@ function Bookseat() {
     }
   }
 
-  console.log("DATAAAA", data);
+  // console.log("DATAAAA", data);
 
   return (
     <>

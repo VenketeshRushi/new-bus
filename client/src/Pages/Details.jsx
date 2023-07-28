@@ -38,7 +38,7 @@ function Details() {
     let amount = searchParams.get("amount");
     let token = Cookies.get("jwttoken");
     let userid = Cookies.get("userid");
-    console.log(date, ticket, busid, amount, token, userid);
+    // console.log(date, ticket, busid, amount, token, userid);
 
     if (
       creds.name === "" ||

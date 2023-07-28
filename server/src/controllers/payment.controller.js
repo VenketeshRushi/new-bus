@@ -22,17 +22,17 @@ router.post("/ticket", async (req, res) => {
 
     instance.orders.create(options, (error, order) => {
       if (error) {
-        console.log(error);
+        // console.log(error);
         return res
           .status(500)
           .json({ message: "Something went wrong", status: "Failed" });
       }
       order_id = order.id;
-      console.log(order);
+      // console.log(order);
       res.status(201).json(order);
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });
@@ -55,7 +55,7 @@ router.post("/verify", async (req, res) => {
       return res.status(400).json({ message: "Invalid signature sent!" });
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 });

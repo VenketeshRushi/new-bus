@@ -4,14 +4,14 @@ const CityModel = require("../models/city.model");
 const app = express.Router();
 
 app.get("/", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let data = await CityModel.find({});
   console.log(data);
   res.send(data);
 });
 
 app.post("/", async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   try {
     let q;
     if(req.body.destination){
@@ -21,14 +21,14 @@ app.post("/", async (req, res) => {
     }
 
     q = q.toUpperCase();
-    console.log(q);
+    // console.log(q);
     let data = await CityModel.find();
 
     let city = data.filter((ele) => {
       return ele.name.toUpperCase().includes(q);
     });
 
-    console.log(city);
+    // console.log(city);
 
     return res.send(city);
   } catch (error) {
@@ -45,8 +45,8 @@ app.post("/showcity", async (req, res) => {
   try {
     let fromcheck= await CityModel.findOne({name:source})
     let destinationcheck=await CityModel.findOne({name:destination})
-    console.log(fromcheck)
-    console.log(destinationcheck)
+    // console.log(fromcheck)
+    // console.log(destinationcheck)
     if(fromcheck){
       if(destinationcheck){
         return res.send({status:"success",data:"Buses In Your City Are Here"})

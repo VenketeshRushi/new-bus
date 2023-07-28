@@ -3,7 +3,7 @@ export function convertObject(obj) {
 
   for (let key in obj) {
     if (obj[key] === true) {
-      console.log(key);
+      // console.log(key);
       if (key === "DTB6") {
         newarr.push(`(Number(ele.departure<6))`);
       } else if (key === "DT612") {

@@ -29,10 +29,10 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login", async (req, res) => {
   let { email, password } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   try {
     let user = await UserModel.findOne({ email });
-    console.log(user);
+    // console.log(user);
     if (!user) {
       return res.send({ status: "Failed", message: "Please check your email" });
     }

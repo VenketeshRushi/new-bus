@@ -23,7 +23,7 @@ function Slider() {
   useEffect(() => {
     let mindate = new Date().toISOString().split("T")[0];
     let maxdate = new Date().toISOString().split("T")[0];
-    console.log(mindate, maxdate);
+    // console.log(mindate, maxdate);
     setdate(mindate);
     setdateinfo({
       ...dateinfo,
@@ -76,7 +76,7 @@ function Slider() {
       res = res.data;
       setOutput(res);
       setShowNames(true);
-      console.log(output);
+      // console.log(output);
     } catch (err) {
       console.log(err);
     }

@@ -29,7 +29,7 @@ function Myticket() {
       let res = await axios.post("http://localhost:8080/order/myticket", {
         id,
       });
-      console.log(res);
+      // console.log(res);
       setdata(res.data);
     } catch (error1) {
       Cookies.remove("jwttoken");
@@ -48,7 +48,7 @@ function Myticket() {
       let res = await axios.post("http://localhost:8080/order/myticket/today", {
         id,
       });
-      console.log("today", res);
+      // console.log("today", res);
       settoday(res.data);
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ function Myticket() {
           id,
         }
       );
-      console.log("upcoming", res);
+      // console.log("upcoming", res);
       setUpcoming(res.data);
     } catch (error) {
       console.log(error);
@@ -90,7 +90,7 @@ function Myticket() {
       let res = await axios.post("http://localhost:8080/order/myticket/past", {
         id,
       });
-      console.log("past", res);
+      // console.log("past", res);
       setPast(res.data);
     } catch (error) {
       console.log(error);

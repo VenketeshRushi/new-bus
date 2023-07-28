@@ -23,7 +23,7 @@ export const sendOrderRequest = async (
   };
   let userDetails = creds;
 
-  console.log("Sending order request", busdata);
+  // console.log("Sending order request", busdata);
   let busDetails = {
     name: busdata[0].companyname,
     from: busdata[0].from,

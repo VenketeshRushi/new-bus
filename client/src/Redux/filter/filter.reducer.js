@@ -12,15 +12,15 @@ export const filterReducer = (state = filterInitalState, { type, payload }) => {
       // console.log(payload, "in redux filterdata");
       let arr = convertObject(payload);
       let q = arr.join(" && ");
-      console.log(arr);
-      console.log(q, "in q");
+      // console.log(arr);
+      // console.log(q, "in q");
       let ans;
       if (q === "") {
         ans = state.backupdata;
       } else {
         ans = state.backupdata.filter((ele) => eval(q));
       }
-      console.log(ans);
+      // console.log(ans);
       return {
         ...state,
         data: ans,

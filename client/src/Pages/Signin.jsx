@@ -10,12 +10,12 @@ function Signin() {
   const isAuthenticated = useSelector(
     (state) => state.auth.data.isAuthenticated
   );
-  const { state } = useLocation();
+  const location = useLocation();
   useEffect(() => {
     if (isAuthenticated) {
-      if (state.from) {
-        console.log(state.from);
-        navigate(state.from, { replace: true });
+      if (location.state && location.state.from) {
+        // console.log(location.state.from);
+        navigate(location.state.from, { replace: true });
       } else {
         navigate("/");
       }

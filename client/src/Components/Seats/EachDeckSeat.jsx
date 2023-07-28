@@ -9,11 +9,11 @@ export default function EachDeckSeat({ id, color, disable }) {
   function handleClick(id) {
     if (select === true) {
       dispatch(removeData(id));
-      console.log("removing", id);
+      // console.log("removing", id);
       setSelect(!select);
     } else {
       dispatch(saveData1(id));
-      console.log("saving", id);
+      // console.log("saving", id);
       setSelect(!select);
     }
   }

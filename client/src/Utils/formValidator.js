@@ -10,8 +10,8 @@ export const validateEmail = (email) => {
 
 
 export const validateMobile = (num) => {
-    console.log(num.length);
-    console.log(num)
+    // console.log(num.length);
+    // console.log(num)
     if (num.length !== 10) {
         return { status: false, message: 'Please provide 10 digit valid mobile number' };
     }

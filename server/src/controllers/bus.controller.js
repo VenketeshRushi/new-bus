@@ -4,10 +4,10 @@ const BusModel = require("../models/bus.model");
 const app = express.Router();
 
 app.post("/addnew", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     let newbus = await BusModel.create({ ...req.body });
-    console.log(newbus);
+    // console.log(newbus);
     return res.send(newbus);
   } catch (error) {
     return res.send(error.message);
@@ -15,7 +15,7 @@ app.post("/addnew", async (req, res) => {
 });
 
 app.post("/getall", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     let sourceStr = req.body.from;
     let destinationStr = req.body.to;
@@ -33,7 +33,7 @@ app.post("/getall", async (req, res) => {
 });
 
 app.post("/one", async (req, res) => {
-  console.log("hi");
+  // console.log("hi");
   try {
     let bus = await BusModel.find({ _id: req.body.id });
     return res.send(bus);
