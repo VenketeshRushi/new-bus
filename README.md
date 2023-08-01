@@ -1,5 +1,3 @@
-# Blue-bus
-
 <h1 align="center">Red Bus Clone</h1>
 
 <h3 align="center">It's a MERN Stack Bus Ticket Booking web application with all the major functionalities</h3>
