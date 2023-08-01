@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "641aae017ab2dbf9728b3f68"
+  },
+  "companyname": "Purpal",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 3000,
+  "email": "Purpal@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "NONAC",
+    "SLEEPER"
+  ],
+  "rating": 3.8,
+  "arrival": "10",
+  "departure": "8",
+  "seats": [
+    "2023-03-25@9,8@men",
+    "2023-03-22@20@women",
+    "2023-03-24@18@men",
+    "2023-03-25@1@men"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "641aae337ab2dbf9728b3f6a"
+  },
+  "companyname": "Neeta",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 5000,
+  "email": "Neeta@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "AC",
+    "SLEEPER"
+  ],
+  "rating": 4.5,
+  "arrival": "20",
+  "departure": "7",
+  "seats": [
+    "2023-03-26@9,10@men"
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "641aae6a7ab2dbf9728b3f6c"
+  },
+  "companyname": "Durga",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 2000,
+  "email": "Durga@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "AC",
+    "SEATER"
+  ],
+  "rating": 3.5,
+  "arrival": "8",
+  "departure": "20",
+  "seats": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "641aae8b7ab2dbf9728b3f6e"
+  },
+  "companyname": "Durga",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 2000,
+  "email": "Durga@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "NONAC",
+    "SEATER"
+  ],
+  "rating": 3.5,
+  "arrival": "14",
+  "departure": "18",
+  "seats": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "641ab2ac4854a2c00e23ceb0"
+  },
+  "companyname": "Volvo",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 6000,
+  "email": "Volvo@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "AC",
+    "SLEEPER"
+  ],
+  "rating": 4.7,
+  "arrival": "22",
+  "departure": "6",
+  "seats": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6422e1c73243ba2225e77e6b"
+  },
+  "companyname": "Durgesh",
+  "from": "Mumbai",
+  "to": "Bengaluru",
+  "price": 6000,
+  "email": "Volvo@gmail.com",
+  "phone": 6530306868,
+  "aminites": [
+    "AC",
+    "SLEEPER"
+  ],
+  "rating": 4.7,
+  "arrival": "22",
+  "departure": "6",
+  "seats": [
+    {
+      "name": "",
+      "surname": "pqr",
+      "_id": {
+        "$oid": "6422e1c73243ba2225e77e6c"
+      }
+    }
+  ],
+  "__v": 0
+}]
