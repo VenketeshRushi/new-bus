@@ -61,7 +61,7 @@ function Details() {
     }
 
     const { data } = await axios.post(
-      "http://localhost:8080/api/payment/ticket",
+      "https://blue-bus.onrender.com/api/payment/ticket",
       {
         amount: amount,
       }

@@ -38,7 +38,7 @@ export const initPayment = (
     handler: async function (response) {
       try {
         const { data } = await axios.post(
-          "http://localhost:8080/api/payment/verify",
+          "https://blue-bus.onrender.com/api/payment/verify",
           response
         );
 

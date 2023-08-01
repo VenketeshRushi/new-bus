@@ -70,7 +70,7 @@ function Slider() {
 
   const handleGetRequest = async () => {
     try {
-      let res = await axios.post("http://localhost:8080/city", {
+      let res = await axios.post("https://blue-bus.onrender.com/city", {
         source,
       });
       res = res.data;
@@ -84,7 +84,7 @@ function Slider() {
 
   const handleGetRequestdes = async () => {
     try {
-      let res = await axios.post("http://localhost:8080/city", {
+      let res = await axios.post("https://blue-bus.onrender.com/city", {
         destination,
       });
       res = res.data;
@@ -119,7 +119,7 @@ function Slider() {
 
   async function getcityinfo(source, destination, date) {
     try {
-      let res = await axios.post("http://localhost:8080/city/showcity", {
+      let res = await axios.post("https://blue-bus.onrender.com/city/showcity", {
         source,
         destination,
         date,
